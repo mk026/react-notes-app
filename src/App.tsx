@@ -1,5 +1,11 @@
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
-  return <div>React Notes App</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 }
 
 export default App;
