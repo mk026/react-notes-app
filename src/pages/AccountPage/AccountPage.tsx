@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-const Account: FC = () => {
+const AccountPage: FC = () => {
   return <div>Account</div>;
 };
 
-export default Account;
+export default AccountPage;

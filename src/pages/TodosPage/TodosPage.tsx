@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-const Todos: FC = () => {
+const TodosPage: FC = () => {
   return <div>Todos</div>;
 };
 
-export default Todos;
+export default TodosPage;

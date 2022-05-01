@@ -1,20 +1,20 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Account from "../../pages/Account";
-import Auth from "../../pages/Auth";
-import Home from "../../pages/Home";
-import Notes from "../../pages/Notes";
-import Todos from "../../pages/Todos";
+import AccountPage from "../../pages/AccountPage/AccountPage";
+import AuthPage from "../../pages/AuthPage/AuthPage";
+import HomePage from "../../pages/HomePage/HomePage";
+import NotesPage from "../../pages/NotesPage/NotesPage";
+import TodosPage from "../../pages/TodosPage/TodosPage";
 
 const AppRouter: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="notes" element={<Notes />} />
-      <Route path="todos" element={<Todos />} />
-      <Route path="account" element={<Account />} />
-      <Route path="auth" element={<Auth />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="notes" element={<NotesPage />} />
+      <Route path="todos" element={<TodosPage />} />
+      <Route path="account" element={<AccountPage />} />
+      <Route path="auth" element={<AuthPage />} />
     </Routes>
   );
 };

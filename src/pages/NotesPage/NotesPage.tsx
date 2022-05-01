@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-const Notes: FC = () => {
+const NotesPage: FC = () => {
   return <div>Notes</div>;
 };
 
-export default Notes;
+export default NotesPage;
