@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { INote } from "../../models/INote";
+
 interface NotesState {
-  notes: any[];
+  notes: INote[];
 }
 
 const initialState: NotesState = {

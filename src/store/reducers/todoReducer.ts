@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { ITodo } from "../../models/ITodo";
+
 interface TodosState {
-  todos: any[];
+  todos: ITodo[];
 }
 
 const initialState: TodosState = {
