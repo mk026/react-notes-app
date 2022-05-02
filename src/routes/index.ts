@@ -1,9 +1,10 @@
 import { ComponentType } from "react";
-import AccountPage from "../pages/AccountPage/AccountPage";
-import AuthPage from "../pages/AuthPage/AuthPage";
-import HomePage from "../pages/HomePage/HomePage";
-import NotesPage from "../pages/NotesPage/NotesPage";
-import TodosPage from "../pages/TodosPage/TodosPage";
+
+import AccountPage from "../pages/account-page/AccountPage";
+import AuthPage from "../pages/auth-page/AuthPage";
+import HomePage from "../pages/home-page/HomePage";
+import NotesPage from "../pages/notes-page/NotesPage";
+import TodosPage from "../pages/todos-page/TodosPage";
 
 export enum Paths {
   HOME_PATH = "/",

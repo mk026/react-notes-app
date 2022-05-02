@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import { Paths } from "../../utils/routes";
+import { Paths } from "../../routes";
 
 import classes from "./Navbar.module.css";
 
