@@ -5,10 +5,14 @@ import HomePage from "../pages/home-page/HomePage";
 import NotesPage from "../pages/notes-page/NotesPage";
 import TodosPage from "../pages/todos-page/TodosPage";
 
-export const appRoutes: IRoute[] = [
+export const authRoutes: IRoute[] = [
   { path: Paths.HOME_PATH, Component: HomePage },
   { path: Paths.NOTES_PATH, Component: NotesPage },
   { path: Paths.TODOS_PATH, Component: TodosPage },
   { path: Paths.ACCOUNT_PATH, Component: AccountPage },
+];
+
+export const publicRoutes: IRoute[] = [
+  { path: Paths.HOME_PATH, Component: HomePage },
   { path: Paths.AUTH_PATH, Component: AuthPage },
 ];
