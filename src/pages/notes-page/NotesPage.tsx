@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import NotesList from "../../components/notes-list/NotesList";
+import NotesList from "../../components/notes/notes-list/NotesList";
 
 const NotesPage: FC = () => {
   return (
