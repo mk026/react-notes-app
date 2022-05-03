@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import TodosList from "../../components/todos-list/TodosList";
+import TodosList from "../../components/todos/todos-list/TodosList";
 
 const TodosPage: FC = () => {
   return (
