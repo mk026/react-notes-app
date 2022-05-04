@@ -1,19 +1,35 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../hooks/redux";
 import { Paths } from "../../routes/types";
+import { getAuthState } from "../../store/selectors/authSelectors";
 
 import classes from "./Navbar.module.css";
 
 const Navbar: FC = () => {
-  return (
-    <nav className={classes.navbar}>
-      <NavLink to={Paths.HOME_PATH}>Home</NavLink>
-      <NavLink to={Paths.NOTES_PATH}>Notes</NavLink>
-      <NavLink to={Paths.TODOS_PATH}>Todos</NavLink>
-      <NavLink to={Paths.ACCOUNT_PATH}>Account</NavLink>
-      <NavLink to={Paths.AUTH_PATH}>Auth</NavLink>
-    </nav>
-  );
+  const { isAuth } = useAppSelector(getAuthState);
+
+  let links = null;
+
+  if (isAuth) {
+    links = (
+      <>
+        <NavLink to={Paths.HOME_PATH}>Home</NavLink>
+        <NavLink to={Paths.NOTES_PATH}>Notes</NavLink>
+        <NavLink to={Paths.TODOS_PATH}>Todos</NavLink>
+        <NavLink to={Paths.ACCOUNT_PATH}>Account</NavLink>
+      </>
+    );
+  } else {
+    links = (
+      <>
+        <NavLink to={Paths.HOME_PATH}>Home</NavLink>
+        <NavLink to={Paths.AUTH_PATH}>Auth</NavLink>
+      </>
+    );
+  }
+
+  return <nav className={classes.navbar}>{links}</nav>;
 };
 
 export default Navbar;
