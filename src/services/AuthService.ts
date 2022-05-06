@@ -9,4 +9,12 @@ export default class AuthService {
   ): Promise<AxiosResponse<IUser>> {
     return api.post<IUser>("/signin", { email, password });
   }
+
+  static async signup(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<AxiosResponse<IUser>> {
+    return api.post<IUser>("/signup", { name, email, password });
+  }
 }

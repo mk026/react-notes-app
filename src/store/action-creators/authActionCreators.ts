@@ -12,3 +12,15 @@ export const signin =
       dispatch(authSlice.actions.signinError((e as Error).message));
     }
   };
+
+export const signup =
+  (name: string, email: string, password: string) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      dispatch(authSlice.actions.signup());
+      const response = await AuthService.signup(name, email, password);
+      dispatch(authSlice.actions.signupSuccess(response.data));
+    } catch (e) {
+      dispatch(authSlice.actions.signupError((e as Error).message));
+    }
+  };

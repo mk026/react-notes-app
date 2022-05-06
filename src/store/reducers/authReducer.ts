@@ -31,6 +31,18 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    signup(state) {
+      state.isLoading = true;
+    },
+    signupSuccess(state, action: PayloadAction<IUser>) {
+      state.isAuth = true;
+      state.isLoading = false;
+      state.user = action.payload;
+    },
+    signupError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
     signout(state) {
       state.isAuth = false;
     },
