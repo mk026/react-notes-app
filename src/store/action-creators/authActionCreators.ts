@@ -1,18 +1,14 @@
-import axios from "axios";
 import { AppDispatch } from "..";
-import { IUser } from "../../models/IUser";
+import AuthService from "../../services/AuthService";
 import { authSlice } from "../reducers/authReducer";
 
 export const signin =
   (email: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(authSlice.actions.signin());
-      const response = await axios.post<IUser>("http://localhost:8080/api", {
-        email,
-        password,
-      });
+      const response = await AuthService.signin(email, password);
       dispatch(authSlice.actions.signinSuccess(response.data));
     } catch (e) {
-      dispatch(authSlice.actions.signinError(e as string));
+      dispatch(authSlice.actions.signinError((e as Error).message));
     }
   };
