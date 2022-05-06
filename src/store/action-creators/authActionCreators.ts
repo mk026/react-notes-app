@@ -7,7 +7,8 @@ export const signin =
     try {
       dispatch(authSlice.actions.signin());
       const response = await AuthService.signin(email, password);
-      dispatch(authSlice.actions.signinSuccess(response.data));
+      AuthService.storeToken(response.data.token);
+      dispatch(authSlice.actions.signinSuccess());
     } catch (e) {
       dispatch(authSlice.actions.signinError((e as Error).message));
     }
@@ -19,7 +20,8 @@ export const signup =
     try {
       dispatch(authSlice.actions.signup());
       const response = await AuthService.signup(name, email, password);
-      dispatch(authSlice.actions.signupSuccess(response.data));
+      AuthService.storeToken(response.data.token);
+      dispatch(authSlice.actions.signupSuccess());
     } catch (e) {
       dispatch(authSlice.actions.signupError((e as Error).message));
     }
