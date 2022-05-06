@@ -43,5 +43,16 @@ export const authSlice = createSlice({
       state.isAuth = false;
       AuthService.removeStoredToken();
     },
+    checkAuth(state) {
+      state.isLoading = true;
+    },
+    checkAuthSuccess(state) {
+      state.isAuth = true;
+      state.isLoading = false;
+    },
+    checkAuthError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });

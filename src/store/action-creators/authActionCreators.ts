@@ -26,3 +26,14 @@ export const signup =
       dispatch(authSlice.actions.signupError((e as Error).message));
     }
   };
+
+export const checkAuth = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(authSlice.actions.checkAuth());
+    const response = await AuthService.checkAuth();
+    AuthService.storeToken(response.data.token);
+    dispatch(authSlice.actions.checkAuthSuccess());
+  } catch (e) {
+    dispatch(authSlice.actions.checkAuthError((e as Error).message));
+  }
+};

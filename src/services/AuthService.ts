@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { api } from "../api";
+import { api, authApi } from "../api";
 
 export interface AuthResponse {
   token: string;
@@ -21,6 +21,10 @@ export default class AuthService {
     password: string
   ): Promise<AxiosResponse<AuthResponse>> {
     return api.post<AuthResponse>("/signup", { name, email, password });
+  }
+
+  static async checkAuth(): Promise<AxiosResponse<AuthResponse>> {
+    return authApi.get<AuthResponse>("/check");
   }
 
   static storeToken(token: string) {
