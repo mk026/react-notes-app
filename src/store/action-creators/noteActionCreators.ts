@@ -11,3 +11,14 @@ export const fetchNotes = () => async (dispatch: AppDispatch) => {
     dispatch(noteSlice.actions.fetchNotesError((e as Error).message));
   }
 };
+
+export const addNote =
+  (title: string, content: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(noteSlice.actions.addNote());
+      const response = await NoteService.addNote(title, content);
+      dispatch(noteSlice.actions.addNoteSuccess(response.data));
+    } catch (e) {
+      dispatch(noteSlice.actions.addNoteError((e as Error).message));
+    }
+  };

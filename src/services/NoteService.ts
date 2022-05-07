@@ -6,4 +6,11 @@ export default class NoteService {
   static async fetchNotes(): Promise<AxiosResponse<INote[]>> {
     return authApi.get<INote[]>("/notes");
   }
+
+  static async addNote(
+    title: string,
+    content: string
+  ): Promise<AxiosResponse<INote>> {
+    return authApi.post<INote>("/notes", { title, content });
+  }
 }

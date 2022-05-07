@@ -29,5 +29,16 @@ export const noteSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    addNote(state) {
+      state.isLoading = true;
+    },
+    addNoteSuccess(state, action: PayloadAction<INote>) {
+      state.isLoading = false;
+      state.notes.push(action.payload);
+    },
+    addNoteError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
