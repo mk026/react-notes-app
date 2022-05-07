@@ -40,5 +40,18 @@ export const todoSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    updateTodo(state) {
+      state.isLoading = true;
+    },
+    updateTodoSuccess(state, action: PayloadAction<ITodo>) {
+      const todoId = action.payload.id;
+      const oldTodoIdx = state.todos.findIndex((todo) => todo.id === todoId);
+      state.todos[oldTodoIdx] = action.payload;
+      state.isLoading = false;
+    },
+    updateTodoError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });

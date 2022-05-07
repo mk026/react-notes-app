@@ -1,4 +1,5 @@
 import { AppDispatch } from "..";
+import { ITodo } from "../../models/ITodo";
 import TodoService from "../../services/TodoService";
 import { todoSlice } from "../reducers/todoReducer";
 
@@ -19,5 +20,15 @@ export const addTodo = (title: string) => async (dispatch: AppDispatch) => {
     dispatch(todoSlice.actions.addTodoSuccess(response.data));
   } catch (e) {
     dispatch(todoSlice.actions.addTodoError((e as Error).message));
+  }
+};
+
+export const updateTodo = (todo: ITodo) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(todoSlice.actions.updateTodo());
+    const response = await TodoService.updateTodo(todo);
+    dispatch(todoSlice.actions.updateTodoSuccess(response.data));
+  } catch (e) {
+    dispatch(todoSlice.actions.updateTodoError((e as Error).message));
   }
 };
