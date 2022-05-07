@@ -40,5 +40,18 @@ export const noteSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    updateNote(state) {
+      state.isLoading = true;
+    },
+    updateNoteSuccess(state, action: PayloadAction<INote>) {
+      const noteId = action.payload.id;
+      const oldNoteIdx = state.notes.findIndex((note) => note.id === noteId);
+      state.notes[oldNoteIdx] = action.payload;
+      state.isLoading = false;
+    },
+    updateNoteError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });

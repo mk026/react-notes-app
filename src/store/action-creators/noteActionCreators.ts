@@ -1,4 +1,5 @@
 import { AppDispatch } from "..";
+import { INote } from "../../models/INote";
 import NoteService from "../../services/NoteService";
 import { noteSlice } from "../reducers/noteReducer";
 
@@ -22,3 +23,13 @@ export const addNote =
       dispatch(noteSlice.actions.addNoteError((e as Error).message));
     }
   };
+
+export const updateNote = (note: INote) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(noteSlice.actions.updateNote());
+    const response = await NoteService.updateNote(note);
+    dispatch(noteSlice.actions.updateNoteSuccess(response.data));
+  } catch (e) {
+    dispatch(noteSlice.actions.updateNoteError((e as Error).message));
+  }
+};

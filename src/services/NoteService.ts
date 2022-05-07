@@ -13,4 +13,8 @@ export default class NoteService {
   ): Promise<AxiosResponse<INote>> {
     return authApi.post<INote>("/notes", { title, content });
   }
+
+  static async updateNote(note: INote): Promise<AxiosResponse<INote>> {
+    return authApi.put<INote>("/notes", note);
+  }
 }
