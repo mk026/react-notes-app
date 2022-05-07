@@ -29,5 +29,16 @@ export const todoSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    addTodo(state) {
+      state.isLoading = true;
+    },
+    addTodoSuccess(state, action: PayloadAction<ITodo>) {
+      state.isLoading = false;
+      state.todos.push(action.payload);
+    },
+    addTodoError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });

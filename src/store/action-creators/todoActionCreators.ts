@@ -11,3 +11,13 @@ export const fetchTodos = () => async (dispatch: AppDispatch) => {
     dispatch(todoSlice.actions.fetchTodosError((e as Error).message));
   }
 };
+
+export const addTodo = (title: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(todoSlice.actions.addTodo());
+    const response = await TodoService.addTodo(title);
+    dispatch(todoSlice.actions.addTodoSuccess(response.data));
+  } catch (e) {
+    dispatch(todoSlice.actions.addTodoError((e as Error).message));
+  }
+};
