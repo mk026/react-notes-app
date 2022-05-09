@@ -1,7 +1,9 @@
 import { AxiosResponse } from "axios";
 import { api, authApi } from "../api";
+import { IUser } from "../models/IUser";
 
 export interface AuthResponse {
+  user: IUser;
   token: string;
 }
 

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import AuthService from "../../services/AuthService";
 
 interface AuthState {
   isAuth: boolean;
@@ -41,7 +40,6 @@ export const authSlice = createSlice({
     },
     signout(state) {
       state.isAuth = false;
-      AuthService.removeStoredToken();
     },
     checkAuth(state) {
       state.isLoading = true;

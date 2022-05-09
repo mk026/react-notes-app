@@ -20,6 +20,9 @@ export const userSlice = createSlice({
     setUser(state, action: PayloadAction<IUser>) {
       state.user = action.payload;
     },
+    removeUser(state) {
+      state.user = null;
+    },
     fetchUser(state) {
       state.isLoading = true;
     },
