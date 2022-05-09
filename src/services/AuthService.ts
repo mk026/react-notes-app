@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { api, authApi } from "../api";
+import { api, ApiEndpoints, authApi } from "../api";
 import { IUser } from "../models/IUser";
 
 export interface AuthResponse {
@@ -14,7 +14,7 @@ export default class AuthService {
     email: string,
     password: string
   ): Promise<AxiosResponse<AuthResponse>> {
-    return api.post<AuthResponse>("/signin", { email, password });
+    return api.post<AuthResponse>(ApiEndpoints.SIGNIN, { email, password });
   }
 
   static async signup(
@@ -22,11 +22,15 @@ export default class AuthService {
     email: string,
     password: string
   ): Promise<AxiosResponse<AuthResponse>> {
-    return api.post<AuthResponse>("/signup", { name, email, password });
+    return api.post<AuthResponse>(ApiEndpoints.SIGNUP, {
+      name,
+      email,
+      password,
+    });
   }
 
   static async checkAuth(): Promise<AxiosResponse<AuthResponse>> {
-    return authApi.get<AuthResponse>("/check");
+    return authApi.get<AuthResponse>(ApiEndpoints.CHECK);
   }
 
   static storeToken(token: string) {

@@ -3,6 +3,15 @@ import AuthService from "../services/AuthService";
 
 export const API_URL = "http://localhost:8080/api";
 
+export enum ApiEndpoints {
+  SIGNIN = "/signin",
+  SIGNUP = "/signup",
+  CHECK = "/check",
+  NOTES = "/notes",
+  USERS = "/users",
+  TODOS = "/todos",
+}
+
 export const api = axios.create({ baseURL: API_URL });
 
 export const authApi = axios.create({ baseURL: API_URL });
