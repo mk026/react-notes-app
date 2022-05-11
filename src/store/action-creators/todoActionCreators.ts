@@ -32,3 +32,13 @@ export const updateTodo = (todo: ITodo) => async (dispatch: AppDispatch) => {
     dispatch(todoSlice.actions.updateTodoError((e as Error).message));
   }
 };
+
+export const deleteTodo = (id: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(todoSlice.actions.deleteTodo());
+    const response = await TodoService.deleteTodo(id);
+    dispatch(todoSlice.actions.deleteTodoSuccess(response.data));
+  } catch (e) {
+    dispatch(todoSlice.actions.deleteTodoError((e as Error).message));
+  }
+};

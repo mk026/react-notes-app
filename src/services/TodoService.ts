@@ -14,4 +14,8 @@ export default class TodoService {
   static async updateTodo(todo: ITodo): Promise<AxiosResponse<ITodo>> {
     return authApi.put<ITodo>(ApiEndpoints.TODOS, todo);
   }
+
+  static async deleteTodo(id: string): Promise<AxiosResponse<ITodo>> {
+    return authApi.delete<ITodo>(`${ApiEndpoints.TODOS}/${id}`);
+  }
 }
