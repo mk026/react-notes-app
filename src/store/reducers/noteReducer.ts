@@ -53,5 +53,16 @@ export const noteSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    deleteNote(state) {
+      state.isLoading = true;
+    },
+    deleteNoteSuccess(state, action: PayloadAction<INote>) {
+      state.isLoading = false;
+      state.notes = state.notes.filter((note) => note.id !== action.payload.id);
+    },
+    deleteNoteError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
