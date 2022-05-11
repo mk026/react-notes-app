@@ -33,3 +33,13 @@ export const updateNote = (note: INote) => async (dispatch: AppDispatch) => {
     dispatch(noteSlice.actions.updateNoteError((e as Error).message));
   }
 };
+
+export const deleteNote = (id: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(noteSlice.actions.deleteNote());
+    const response = await NoteService.deleteNote(id);
+    dispatch(noteSlice.actions.deleteNoteSuccess(response.data));
+  } catch (e) {
+    dispatch(noteSlice.actions.deleteNoteError((e as Error).message));
+  }
+};

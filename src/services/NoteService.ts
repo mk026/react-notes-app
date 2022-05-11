@@ -17,4 +17,8 @@ export default class NoteService {
   static async updateNote(note: INote): Promise<AxiosResponse<INote>> {
     return authApi.put<INote>(ApiEndpoints.NOTES, note);
   }
+
+  static async deleteNote(id: string): Promise<AxiosResponse<INote>> {
+    return authApi.delete<INote>(`${ApiEndpoints.NOTES}/${id}`);
+  }
 }
