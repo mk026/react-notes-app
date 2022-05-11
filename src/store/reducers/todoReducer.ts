@@ -53,5 +53,16 @@ export const todoSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    deleteTodo(state) {
+      state.isLoading = true;
+    },
+    deleteTodoSuccess(state, action: PayloadAction<ITodo>) {
+      state.isLoading = false;
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+    },
+    deleteTodoError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
