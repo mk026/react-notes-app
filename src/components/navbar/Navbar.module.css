@@ -1,3 +1,25 @@
 .navbar {
-  background-color: #414141;
+  background-color: #323a42;
+}
+
+.navbar__link {
+  font-size: 1.2rem;
+  color: #d3d3d3;
+
+  display: inline-block;
+  padding: 20px;
+
+  text-decoration: none;
+
+  transition: all 0.1s linear;
+}
+
+.navbar__link:hover {
+  color: #ffffff;
+}
+
+.navbar__link.active {
+  color: #ffffff;
+
+  background-color: #242a30;
 }

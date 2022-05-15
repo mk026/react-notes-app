@@ -11,22 +11,39 @@ import classes from "./Navbar.module.css";
 const Navbar: FC = () => {
   const { isAuth } = useAppSelector(getAuthState);
 
+  const getLinkClasses = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? classes.navbar__link + " " + classes.active
+      : classes.navbar__link;
+
   let links = null;
 
   if (isAuth) {
     links = (
       <>
-        <NavLink to={Paths.HOME_PATH}>Home</NavLink>
-        <NavLink to={Paths.NOTES_PATH}>Notes</NavLink>
-        <NavLink to={Paths.TODOS_PATH}>Todos</NavLink>
-        <NavLink to={Paths.ACCOUNT_PATH}>Account</NavLink>
+        <NavLink className={getLinkClasses} to={Paths.HOME_PATH}>
+          Home
+        </NavLink>
+        <NavLink className={getLinkClasses} to={Paths.NOTES_PATH}>
+          Notes
+        </NavLink>
+        <NavLink className={getLinkClasses} to={Paths.TODOS_PATH}>
+          Todos
+        </NavLink>
+        <NavLink className={getLinkClasses} to={Paths.ACCOUNT_PATH}>
+          Account
+        </NavLink>
       </>
     );
   } else {
     links = (
       <>
-        <NavLink to={Paths.HOME_PATH}>Home</NavLink>
-        <NavLink to={Paths.AUTH_PATH}>Auth</NavLink>
+        <NavLink className={getLinkClasses} to={Paths.HOME_PATH}>
+          Home
+        </NavLink>
+        <NavLink className={getLinkClasses} to={Paths.AUTH_PATH}>
+          Auth
+        </NavLink>
       </>
     );
   }
