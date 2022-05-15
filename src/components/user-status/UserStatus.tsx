@@ -6,6 +6,8 @@ import { Paths } from "../../routes/types";
 import { signout } from "../../store/action-creators/authActionCreators";
 import { getUserState } from "../../store/selectors/userSelectors";
 
+import classes from "./UserStatus.module.css";
+
 const UserStatus: FC = () => {
   const { user } = useAppSelector(getUserState);
   const dispatch = useAppDispatch();
@@ -17,8 +19,8 @@ const UserStatus: FC = () => {
   };
 
   return (
-    <div>
-      <p>{user?.name}</p>
+    <div className={classes["user-status"]}>
+      <p className={classes["user-status__name"]}>{user?.name}</p>
       <button onClick={signoutHandler}>Signout</button>
     </div>
   );

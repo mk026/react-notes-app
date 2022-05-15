@@ -50,7 +50,7 @@ const Navbar: FC = () => {
 
   return (
     <nav className={classes.navbar}>
-      {links}
+      <div>{links}</div>
       {isAuth && <UserStatus />}
     </nav>
   );
