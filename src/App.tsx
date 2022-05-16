@@ -3,17 +3,16 @@ import { useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
 import AppRouter from "./components/app-router/AppRouter";
 import AuthService from "./services/AuthService";
-import { useAppDispatch } from "./hooks/redux";
-import { checkAuth } from "./store/action-creators/authActionCreators";
+import { useActions } from "./hooks/useActions";
 
 function App() {
-  const dispatch = useAppDispatch();
+  const { checkAuth } = useActions();
 
   useEffect(() => {
     if (AuthService.getStoredToken()) {
-      dispatch(checkAuth());
+      checkAuth();
     }
-  }, [dispatch]);
+  }, [checkAuth]);
 
   return (
     <>

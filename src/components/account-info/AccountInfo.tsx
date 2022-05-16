@@ -1,35 +1,31 @@
 import { FC, FormEvent, MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useAppSelector } from "../../hooks/redux";
+import { useActions } from "../../hooks/useActions";
 import { Paths } from "../../routes/types";
-import { signout } from "../../store/action-creators/authActionCreators";
-import {
-  updateEmail,
-  updateName,
-} from "../../store/action-creators/userActionCreators";
 import { getUserState } from "../../store/selectors";
 
 const AccountInfo: FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const { user } = useAppSelector(getUserState);
-  const dispatch = useAppDispatch();
+  const { signout, updateName, updateEmail } = useActions();
   const navigate = useNavigate();
 
   const signoutHandler = (e: MouseEvent<HTMLButtonElement>) => {
-    dispatch(signout());
+    signout();
     navigate(Paths.HOME_PATH);
   };
 
   const changeNameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(updateName(name));
+    updateName(name);
   };
 
   const changeEmailHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(updateEmail(email));
+    updateEmail(email);
   };
 
   return (
