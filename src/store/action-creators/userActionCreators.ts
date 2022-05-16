@@ -1,6 +1,6 @@
 import { AppDispatch } from "..";
 import UserService from "../../services/UserService";
-import { userSlice } from "../reducers/userReducer";
+import { userSlice } from "../reducers";
 
 export const updateName = (name: string) => async (dispatch: AppDispatch) => {
   try {

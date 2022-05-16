@@ -1,7 +1,7 @@
 import { AppDispatch } from "..";
 import { INote } from "../../models/INote";
 import NoteService from "../../services/NoteService";
-import { noteSlice } from "../reducers/noteReducer";
+import { noteSlice } from "../reducers";
 
 export const fetchNotes = () => async (dispatch: AppDispatch) => {
   try {

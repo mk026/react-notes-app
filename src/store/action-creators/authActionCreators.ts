@@ -1,7 +1,7 @@
 import { AppDispatch } from "..";
 import AuthService from "../../services/AuthService";
-import { authSlice } from "../reducers/authReducer";
-import { userSlice } from "../reducers/userReducer";
+import { authSlice } from "../reducers";
+import { userSlice } from "../reducers";
 
 export const signin =
   (email: string, password: string) => async (dispatch: AppDispatch) => {

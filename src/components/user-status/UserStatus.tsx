@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { Paths } from "../../routes/types";
 import { signout } from "../../store/action-creators/authActionCreators";
-import { getUserState } from "../../store/selectors/userSelectors";
+import { getUserState } from "../../store/selectors";
 
 import classes from "./UserStatus.module.css";
 

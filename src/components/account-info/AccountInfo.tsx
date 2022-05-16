@@ -8,7 +8,7 @@ import {
   updateEmail,
   updateName,
 } from "../../store/action-creators/userActionCreators";
-import { getUserState } from "../../store/selectors/userSelectors";
+import { getUserState } from "../../store/selectors";
 
 const AccountInfo: FC = () => {
   const [name, setName] = useState("");

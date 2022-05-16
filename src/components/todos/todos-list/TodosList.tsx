@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 
 import { useAppSelector } from "../../../hooks/redux";
 import { useActions } from "../../../hooks/useActions";
-import { getTodoState } from "../../../store/selectors/todoSelectors";
+import { getTodoState } from "../../../store/selectors";
 import TodoItem from "../todo-item/TodoItem";
 
 const TodosList: FC = () => {

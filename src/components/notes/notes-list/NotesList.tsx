@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 
 import { useAppSelector } from "../../../hooks/redux";
 import { useActions } from "../../../hooks/useActions";
-import { getNoteState } from "../../../store/selectors/noteSelectors";
+import { getNoteState } from "../../../store/selectors";
 import NoteItem from "../note-item/NoteItem";
 
 const NotesList: FC = () => {

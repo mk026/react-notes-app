@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux";
-import { getAuthState } from "../../store/selectors/authSelectors";
+import { getAuthState } from "../../store/selectors";
 import { authRoutes, publicRoutes } from "../../routes";
 
 const AppRouter: FC = () => {

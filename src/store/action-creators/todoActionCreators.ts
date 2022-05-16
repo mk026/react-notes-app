@@ -1,7 +1,7 @@
 import { AppDispatch } from "..";
 import { ITodo } from "../../models/ITodo";
 import TodoService from "../../services/TodoService";
-import { todoSlice } from "../reducers/todoReducer";
+import { todoSlice } from "../reducers";
 
 export const fetchTodos = () => async (dispatch: AppDispatch) => {
   try {

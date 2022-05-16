@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux";
 import { Paths } from "../../routes/types";
-import { getAuthState } from "../../store/selectors/authSelectors";
+import { getAuthState } from "../../store/selectors";
 import UserStatus from "../user-status/UserStatus";
 
 import classes from "./Navbar.module.css";
