@@ -1,17 +1,17 @@
 import { FC, useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { fetchNotes } from "../../../store/action-creators/noteActionCreators";
+import { useAppSelector } from "../../../hooks/redux";
+import { useActions } from "../../../hooks/useActions";
 import { getNoteState } from "../../../store/selectors/noteSelectors";
 import NoteItem from "../note-item/NoteItem";
 
 const NotesList: FC = () => {
   const { notes, isLoading, error } = useAppSelector(getNoteState);
-  const dispatch = useAppDispatch();
+  const { fetchNotes } = useActions();
 
   useEffect(() => {
-    dispatch(fetchNotes());
-  }, [dispatch]);
+    fetchNotes();
+  }, [fetchNotes]);
 
   if (isLoading) {
     return <div>Loading...</div>;

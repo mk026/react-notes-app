@@ -1,16 +1,15 @@
 import { FC, FormEvent, useState } from "react";
 
-import { useAppDispatch } from "../../../hooks/redux";
-import { addNote } from "../../../store/action-creators/noteActionCreators";
+import { useActions } from "../../../hooks/useActions";
 
 const AddNoteForm: FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const dispatch = useAppDispatch();
+  const { addNote } = useActions();
 
   const addNoteHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addNote(title, content));
+    addNote(title, content);
   };
 
   return (

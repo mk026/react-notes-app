@@ -1,15 +1,14 @@
 import { FC, FormEvent, useState } from "react";
 
-import { useAppDispatch } from "../../../hooks/redux";
-import { addTodo } from "../../../store/action-creators/todoActionCreators";
+import { useActions } from "../../../hooks/useActions";
 
 const AddTodoForm: FC = () => {
   const [title, setTitle] = useState("");
-  const dispatch = useAppDispatch();
+  const { addTodo } = useActions();
 
   const addTodoHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addTodo(title));
+    addTodo(title);
   };
 
   return (

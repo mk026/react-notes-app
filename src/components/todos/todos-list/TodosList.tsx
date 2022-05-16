@@ -1,17 +1,17 @@
 import { FC, useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { fetchTodos } from "../../../store/action-creators/todoActionCreators";
+import { useAppSelector } from "../../../hooks/redux";
+import { useActions } from "../../../hooks/useActions";
 import { getTodoState } from "../../../store/selectors/todoSelectors";
 import TodoItem from "../todo-item/TodoItem";
 
 const TodosList: FC = () => {
   const { todos, isLoading, error } = useAppSelector(getTodoState);
-  const dispatch = useAppDispatch();
+  const { fetchTodos } = useActions();
 
   useEffect(() => {
-    dispatch(fetchTodos());
-  }, [dispatch]);
+    fetchTodos();
+  }, [fetchTodos]);
 
   if (isLoading) {
     return <div>Loading...</div>;
