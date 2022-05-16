@@ -1,18 +1,18 @@
 import { FC, FormEvent, useState } from "react";
-import { useAppDispatch } from "../../../hooks/redux";
-import { signup } from "../../../store/action-creators/authActionCreators";
+
+import { useActions } from "../../../hooks/useActions";
 
 const SignupForm: FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const dispatch = useAppDispatch();
+  const { signup } = useActions();
 
   const signupHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password === passwordConfirm) {
-      dispatch(signup(name, email, password));
+      signup(name, email, password);
     }
   };
 
