@@ -28,7 +28,7 @@ const NotesList: FC = () => {
   return (
     <div>
       {notes.map((note) => (
-        <NoteItem key={note.id} note={note} />
+        <NoteItem key={note._id} note={note} />
       ))}
     </div>
   );
