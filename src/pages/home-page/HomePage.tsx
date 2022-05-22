@@ -1,7 +1,9 @@
 import { FC } from "react";
 
+import Page from "../../components/ui/page/Page";
+
 const HomePage: FC = () => {
-  return <div>Home</div>;
+  return <Page>Home</Page>;
 };
 
 export default HomePage;

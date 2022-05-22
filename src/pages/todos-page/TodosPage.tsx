@@ -1,15 +1,16 @@
 import { FC } from "react";
-import AddTodoForm from "../../components/forms/add-todo-form/AddTodoForm";
 
+import AddTodoForm from "../../components/forms/add-todo-form/AddTodoForm";
 import TodosList from "../../components/todos/todos-list/TodosList";
+import Page from "../../components/ui/page/Page";
 
 const TodosPage: FC = () => {
   return (
-    <div>
+    <Page>
       <h1>Todos</h1>
       <AddTodoForm />
       <TodosList />
-    </div>
+    </Page>
   );
 };
 
