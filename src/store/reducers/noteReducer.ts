@@ -44,8 +44,8 @@ export const noteSlice = createSlice({
       state.isLoading = true;
     },
     updateNoteSuccess(state, action: PayloadAction<INote>) {
-      const noteId = action.payload.id;
-      const oldNoteIdx = state.notes.findIndex((note) => note.id === noteId);
+      const noteId = action.payload._id;
+      const oldNoteIdx = state.notes.findIndex((note) => note._id === noteId);
       state.notes[oldNoteIdx] = action.payload;
       state.isLoading = false;
     },
@@ -58,7 +58,9 @@ export const noteSlice = createSlice({
     },
     deleteNoteSuccess(state, action: PayloadAction<INote>) {
       state.isLoading = false;
-      state.notes = state.notes.filter((note) => note.id !== action.payload.id);
+      state.notes = state.notes.filter(
+        (note) => note._id !== action.payload._id
+      );
     },
     deleteNoteError(state, action: PayloadAction<string>) {
       state.isLoading = false;

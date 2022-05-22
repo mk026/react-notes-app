@@ -44,8 +44,8 @@ export const todoSlice = createSlice({
       state.isLoading = true;
     },
     updateTodoSuccess(state, action: PayloadAction<ITodo>) {
-      const todoId = action.payload.id;
-      const oldTodoIdx = state.todos.findIndex((todo) => todo.id === todoId);
+      const todoId = action.payload._id;
+      const oldTodoIdx = state.todos.findIndex((todo) => todo._id === todoId);
       state.todos[oldTodoIdx] = action.payload;
       state.isLoading = false;
     },
@@ -58,7 +58,9 @@ export const todoSlice = createSlice({
     },
     deleteTodoSuccess(state, action: PayloadAction<ITodo>) {
       state.isLoading = false;
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+      state.todos = state.todos.filter(
+        (todo) => todo._id !== action.payload._id
+      );
     },
     deleteTodoError(state, action: PayloadAction<string>) {
       state.isLoading = false;
