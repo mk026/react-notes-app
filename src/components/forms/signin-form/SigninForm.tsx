@@ -2,7 +2,11 @@ import { FC, FormEvent, useState } from "react";
 
 import { useActions } from "../../../hooks/useActions";
 
-const SigninForm: FC = () => {
+interface SigninFormProps {
+  switchToSignup: () => void;
+}
+
+const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signin } = useActions();
@@ -29,6 +33,9 @@ const SigninForm: FC = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button type="submit">Signin</button>
+      <p>
+        Don't have an account? <button onClick={switchToSignup}>Signup</button>
+      </p>
     </form>
   );
 };
