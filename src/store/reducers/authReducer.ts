@@ -41,9 +41,6 @@ export const authSlice = createSlice({
     signout(state) {
       state.isAuth = false;
     },
-    checkAuth(state) {
-      state.isLoading = true;
-    },
     checkAuthSuccess(state) {
       state.isAuth = true;
       state.isLoading = false;
@@ -51,6 +48,9 @@ export const authSlice = createSlice({
     checkAuthError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    disableLoading(state) {
+      state.isLoading = false;
     },
   },
 });
