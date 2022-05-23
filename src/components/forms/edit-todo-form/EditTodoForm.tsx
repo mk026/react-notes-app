@@ -1,9 +1,29 @@
-import { FC } from "react";
+import { FC, FormEvent, useState } from "react";
 
-const EditTodoForm: FC = () => {
+import { useActions } from "../../../hooks/useActions";
+import { ITodo } from "../../../models/ITodo";
+
+interface EditTodoFormProps {
+  todo: ITodo;
+}
+
+const EditTodoForm: FC<EditTodoFormProps> = ({ todo }) => {
+  const [title, setTitle] = useState("");
+  const { updateTodo } = useActions();
+
+  const editTodoHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    updateTodo({ ...todo, title });
+  };
+
   return (
-    <form>
-      <input type="text" placeholder="Enter new todo title" />
+    <form onSubmit={editTodoHandler}>
+      <input
+        type="text"
+        placeholder="Enter new todo title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <button type="submit">Save</button>
     </form>
   );
