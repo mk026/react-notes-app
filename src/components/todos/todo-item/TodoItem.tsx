@@ -14,7 +14,7 @@ const TodoItem: FC<TodoItemProps> = ({ todo }) => {
 
   return (
     <>
-      {isEditing && <EditTodoForm todo={todo} />}
+      {isEditing && <EditTodoForm todo={todo} onClose={toggleEditForm} />}
       <div>
         <input type="checkbox" checked={todo.completed} />
         <p>{todo.title}</p>

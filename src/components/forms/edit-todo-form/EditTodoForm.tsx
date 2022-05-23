@@ -5,9 +5,10 @@ import { ITodo } from "../../../models/ITodo";
 
 interface EditTodoFormProps {
   todo: ITodo;
+  onClose: () => void;
 }
 
-const EditTodoForm: FC<EditTodoFormProps> = ({ todo }) => {
+const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
   const [title, setTitle] = useState("");
   const { updateTodo } = useActions();
 
@@ -25,6 +26,7 @@ const EditTodoForm: FC<EditTodoFormProps> = ({ todo }) => {
         onChange={(e) => setTitle(e.target.value)}
       />
       <button type="submit">Save</button>
+      <button onClick={onClose}>Cancel</button>
     </form>
   );
 };

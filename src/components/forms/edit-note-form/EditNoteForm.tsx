@@ -5,9 +5,10 @@ import { INote } from "../../../models/INote";
 
 interface EditNoteFormProps {
   note: INote;
+  onClose: () => void;
 }
 
-const EditNoteForm: FC<EditNoteFormProps> = ({ note }) => {
+const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { updateNote } = useActions();
@@ -34,6 +35,7 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note }) => {
         onChange={(e) => setContent(e.target.value)}
       />
       <button type="submit">Save</button>
+      <button onClick={onClose}>Close</button>
     </form>
   );
 };

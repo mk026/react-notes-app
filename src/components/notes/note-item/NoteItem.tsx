@@ -14,7 +14,7 @@ const NoteItem: FC<NoteItemProps> = ({ note }) => {
 
   return (
     <>
-      {isEditing && <EditNoteForm note={note} />}
+      {isEditing && <EditNoteForm note={note} onClose={toggleEditForm} />}
       <div>
         <p>{note.title}</p>
         <p>{note.content}</p>
