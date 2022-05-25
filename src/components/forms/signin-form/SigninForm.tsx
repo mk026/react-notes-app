@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 import { useActions } from "../../../hooks/useActions";
 import {
@@ -7,6 +8,7 @@ import {
   SigninFormValues,
   signinValidationSchema,
 } from "../../../validation/signinValidation";
+import { Paths } from "../../../routes/types";
 
 interface SigninFormProps {
   switchToSignup: () => void;
@@ -20,9 +22,11 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
       onSubmit: (values) => signinHandler(values),
     });
   const { signin } = useActions();
+  const navigate = useNavigate();
 
   const signinHandler = ({ email, password }: SigninFormValues) => {
     signin(email, password);
+    navigate(Paths.HOME_PATH);
   };
 
   return (
