@@ -1,16 +1,11 @@
-import { FC, HTMLInputTypeAttribute } from "react";
+import { FC, InputHTMLAttributes } from "react";
 
 import classes from "./Input.module.css";
 
-interface InputProps {
-  type: HTMLInputTypeAttribute;
-  placeholder: string;
-}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const Input: FC<InputProps> = ({ type, placeholder }) => {
-  return (
-    <input className={classes.input} type={type} placeholder={placeholder} />
-  );
+const Input: FC<InputProps> = (props) => {
+  return <input className={classes.input} {...props} />;
 };
 
 export default Input;
