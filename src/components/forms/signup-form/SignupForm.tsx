@@ -28,7 +28,10 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
     name: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.string().required(),
-    confirmPassword: yup.string().required(),
+    confirmPassword: yup
+      .string()
+      .required()
+      .oneOf([yup.ref("password")], "Passwords are not equal"),
   });
 
   const signupHandler = ({ name, email, password }: SignupFormValues) => {
@@ -55,6 +58,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
           <label htmlFor="signup-name">Enter your name</label>
           <input
             id="signup-name"
+            name="name"
             type="text"
             value={values.name}
             onChange={handleChange}
@@ -64,6 +68,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
           <label htmlFor="signup-email">Enter your email</label>
           <input
             id="signup-email"
+            name="email"
             type="text"
             value={values.email}
             onChange={handleChange}
@@ -73,6 +78,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
           <label htmlFor="signup-password">Enter your password</label>
           <input
             id="signup-password"
+            name="password"
             type="password"
             value={values.password}
             onChange={handleChange}
@@ -84,6 +90,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
           <label htmlFor="signup-password-confirm">Confirm your password</label>
           <input
             id="signup-password-confirm"
+            name="confirmPassword"
             type="password"
             value={values.confirmPassword}
             onChange={handleChange}
