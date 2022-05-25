@@ -1,38 +1,22 @@
-import { useFormik } from "formik";
 import { FC } from "react";
-import * as yup from "yup";
+import { useFormik } from "formik";
 
 import { useActions } from "../../../hooks/useActions";
+import {
+  signupFormInitialValues,
+  SignupFormValues,
+  signupValidationSchema,
+} from "../../../validation/signupValidation";
 
 interface SignupFormProps {
   switchToSignin: () => void;
 }
 
-interface SignupFormValues {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
 const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<SignupFormValues>({
-      initialValues: {
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      },
-      validationSchema: yup.object({
-        name: yup.string().required(),
-        email: yup.string().email().required(),
-        password: yup.string().required(),
-        confirmPassword: yup
-          .string()
-          .required()
-          .oneOf([yup.ref("password")], "Passwords are not equal"),
-      }),
+      initialValues: signupFormInitialValues,
+      validationSchema: signupValidationSchema,
       onSubmit: (values) => signupHandler(values),
     });
   const { signup } = useActions();
