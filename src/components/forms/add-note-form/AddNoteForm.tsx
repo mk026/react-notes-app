@@ -1,32 +1,47 @@
-import { FC, FormEvent, useState } from "react";
+import { FC } from "react";
+import { useFormik } from "formik";
 
 import { useActions } from "../../../hooks/useActions";
+import {
+  noteFormInitialValues,
+  NoteFormValues,
+  noteValidationSchema,
+} from "../../../validation/noteValidation";
 
 const AddNoteForm: FC = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
+    useFormik<NoteFormValues>({
+      initialValues: noteFormInitialValues,
+      validationSchema: noteValidationSchema,
+      onSubmit: (values) => addNoteHandler(values),
+    });
   const { addNote } = useActions();
 
-  const addNoteHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const addNoteHandler = ({ title, content }: NoteFormValues) => {
     addNote(title, content);
   };
 
   return (
-    <form onSubmit={addNoteHandler}>
-      <label htmlFor="note-title">Note title</label>
+    <form onSubmit={handleSubmit}>
+      {touched.title && errors.title && <div>{errors.title}</div>}
+      <label htmlFor="title">Note title</label>
       <input
-        id="note-title"
+        id="title"
+        name="title"
         type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={values.title}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
-      <label htmlFor="note-content">Note content</label>
+      {touched.content && errors.content && <div>{errors.content}</div>}
+      <label htmlFor="content">Note content</label>
       <input
-        id="note-content"
+        id="content"
+        name="content"
         type="text"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
+        value={values.content}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <button type="submit">Add todo</button>
     </form>
