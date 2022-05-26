@@ -32,17 +32,18 @@ export const signup =
 
 export const checkAuth = () => async (dispatch: AppDispatch) => {
   try {
+    dispatch(authSlice.actions.checkAuthStart());
     if (AuthService.getStoredToken()) {
       const response = await AuthService.checkAuth();
       AuthService.storeToken(response.data.token);
       dispatch(userSlice.actions.setUser(response.data.user));
-      dispatch(authSlice.actions.authSuccess());
+      dispatch(authSlice.actions.checkAuthEnd(true));
     } else {
-      dispatch(authSlice.actions.disableLoading());
+      dispatch(authSlice.actions.checkAuthEnd(false));
     }
   } catch (e) {
     AuthService.removeStoredToken();
-    dispatch(authSlice.actions.setError((e as Error).message));
+    dispatch(authSlice.actions.checkAuthError((e as Error).message));
   }
 };
 

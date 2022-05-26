@@ -8,13 +8,13 @@ import { getAuthState } from "./store/selectors";
 
 function App() {
   const { checkAuth } = useActions();
-  const { isLoading } = useAppSelector(getAuthState);
+  const { isChecking } = useAppSelector(getAuthState);
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
-  if (isLoading) {
+  if (isChecking) {
     return <div>Loading...</div>;
   }
 
