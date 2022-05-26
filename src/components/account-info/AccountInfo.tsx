@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux";
@@ -7,13 +7,14 @@ import { Paths } from "../../routes/types";
 import { getUserState } from "../../store/selectors";
 import ChangeEmailForm from "../forms/change-email-form/ChangeEmailForm";
 import ChangeNameForm from "../forms/change-name-form/ChangeNameForm";
+import ChangePasswordForm from "../forms/change-password-form/ChangePasswordForm";
 
 const AccountInfo: FC = () => {
   const { user } = useAppSelector(getUserState);
   const { signout } = useActions();
   const navigate = useNavigate();
 
-  const signoutHandler = (e: MouseEvent<HTMLButtonElement>) => {
+  const signoutHandler = () => {
     signout();
     navigate(Paths.HOME_PATH);
   };
@@ -27,6 +28,10 @@ const AccountInfo: FC = () => {
       <div>
         <p>{user?.email}</p>
         <ChangeEmailForm />
+      </div>
+      <div>
+        <p>Update password</p>
+        <ChangePasswordForm />
       </div>
       <button onClick={signoutHandler}>Signout</button>
     </div>
