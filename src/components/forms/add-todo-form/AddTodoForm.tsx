@@ -1,24 +1,37 @@
-import { FC, FormEvent, useState } from "react";
+import { FC } from "react";
+import { useFormik } from "formik";
 
 import { useActions } from "../../../hooks/useActions";
+import {
+  todoFormInitialValues,
+  TodoFormValues,
+  todoValidationSchema,
+} from "../../../validation/todoValidation";
 
 const AddTodoForm: FC = () => {
-  const [title, setTitle] = useState("");
+  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
+    useFormik<TodoFormValues>({
+      initialValues: todoFormInitialValues,
+      validationSchema: todoValidationSchema,
+      onSubmit: (values) => addTodoHandler(values),
+    });
   const { addTodo } = useActions();
 
-  const addTodoHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const addTodoHandler = ({ title }: TodoFormValues) => {
     addTodo(title);
   };
 
   return (
-    <form onSubmit={addTodoHandler}>
-      <label htmlFor="todo-title">Todo title</label>
+    <form onSubmit={handleSubmit}>
+      {touched.title && errors.title && <div>{errors.title}</div>}
+      <label htmlFor="title">Todo title</label>
       <input
-        id="todo-title"
+        id="title"
+        name="title"
         type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={values.title}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <button type="submit">Add todo</button>
     </form>
