@@ -18,30 +18,20 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    fetchTodos(state) {
+    enableLoading(state) {
       state.isLoading = true;
     },
     fetchTodosSuccess(state, action: PayloadAction<ITodo[]>) {
       state.isLoading = false;
       state.todos = action.payload;
     },
-    fetchTodosError(state, action: PayloadAction<string>) {
+    setError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
-    },
-    addTodo(state) {
-      state.isLoading = true;
     },
     addTodoSuccess(state, action: PayloadAction<ITodo>) {
       state.isLoading = false;
       state.todos.push(action.payload);
-    },
-    addTodoError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    updateTodo(state) {
-      state.isLoading = true;
     },
     updateTodoSuccess(state, action: PayloadAction<ITodo>) {
       const todoId = action.payload._id;
@@ -49,22 +39,11 @@ export const todoSlice = createSlice({
       state.todos[oldTodoIdx] = action.payload;
       state.isLoading = false;
     },
-    updateTodoError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    deleteTodo(state) {
-      state.isLoading = true;
-    },
     deleteTodoSuccess(state, action: PayloadAction<ITodo>) {
       state.isLoading = false;
       state.todos = state.todos.filter(
         (todo) => todo._id !== action.payload._id
       );
-    },
-    deleteTodoError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });

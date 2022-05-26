@@ -16,38 +16,19 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signin(state) {
+    enableLoading(state) {
       state.isLoading = true;
     },
-    signinSuccess(state) {
+    authSuccess(state) {
       state.isAuth = true;
       state.isLoading = false;
     },
-    signinError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    signup(state) {
-      state.isLoading = true;
-    },
-    signupSuccess(state) {
-      state.isAuth = true;
-      state.isLoading = false;
-    },
-    signupError(state, action: PayloadAction<string>) {
+    setError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
     },
     signout(state) {
       state.isAuth = false;
-    },
-    checkAuthSuccess(state) {
-      state.isAuth = true;
-      state.isLoading = false;
-    },
-    checkAuthError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
     },
     disableLoading(state) {
       state.isLoading = false;

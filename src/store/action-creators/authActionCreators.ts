@@ -6,13 +6,13 @@ import { userSlice } from "../reducers";
 export const signin =
   (email: string, password: string) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(authSlice.actions.signin());
+      dispatch(authSlice.actions.enableLoading());
       const response = await AuthService.signin(email, password);
       AuthService.storeToken(response.data.token);
       dispatch(userSlice.actions.setUser(response.data.user));
-      dispatch(authSlice.actions.signinSuccess());
+      dispatch(authSlice.actions.authSuccess());
     } catch (e) {
-      dispatch(authSlice.actions.signinError((e as Error).message));
+      dispatch(authSlice.actions.setError((e as Error).message));
     }
   };
 
@@ -20,13 +20,13 @@ export const signup =
   (name: string, email: string, password: string) =>
   async (dispatch: AppDispatch) => {
     try {
-      dispatch(authSlice.actions.signup());
+      dispatch(authSlice.actions.enableLoading());
       const response = await AuthService.signup(name, email, password);
       AuthService.storeToken(response.data.token);
       dispatch(userSlice.actions.setUser(response.data.user));
-      dispatch(authSlice.actions.signupSuccess());
+      dispatch(authSlice.actions.authSuccess());
     } catch (e) {
-      dispatch(authSlice.actions.signupError((e as Error).message));
+      dispatch(authSlice.actions.setError((e as Error).message));
     }
   };
 
@@ -36,13 +36,13 @@ export const checkAuth = () => async (dispatch: AppDispatch) => {
       const response = await AuthService.checkAuth();
       AuthService.storeToken(response.data.token);
       dispatch(userSlice.actions.setUser(response.data.user));
-      dispatch(authSlice.actions.checkAuthSuccess());
+      dispatch(authSlice.actions.authSuccess());
     } else {
       dispatch(authSlice.actions.disableLoading());
     }
   } catch (e) {
     AuthService.removeStoredToken();
-    dispatch(authSlice.actions.checkAuthError((e as Error).message));
+    dispatch(authSlice.actions.setError((e as Error).message));
   }
 };
 

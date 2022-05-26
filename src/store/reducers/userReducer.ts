@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { IUser } from "../../models/IUser";
 
 interface UserState {
@@ -23,14 +24,14 @@ export const userSlice = createSlice({
     removeUser(state) {
       state.user = null;
     },
-    fetchUser(state) {
+    enableLoading(state) {
       state.isLoading = true;
     },
     fetchUserSuccess(state, action: PayloadAction<IUser>) {
       state.isLoading = false;
       state.user = action.payload;
     },
-    fetchUserError(state, action: PayloadAction<string>) {
+    setError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
     },

@@ -5,41 +5,41 @@ import { noteSlice } from "../reducers";
 
 export const fetchNotes = () => async (dispatch: AppDispatch) => {
   try {
-    dispatch(noteSlice.actions.fetchNotes());
+    dispatch(noteSlice.actions.enableLoading());
     const response = await NoteService.fetchNotes();
     dispatch(noteSlice.actions.fetchNotesSuccess(response.data));
   } catch (e) {
-    dispatch(noteSlice.actions.fetchNotesError((e as Error).message));
+    dispatch(noteSlice.actions.setError((e as Error).message));
   }
 };
 
 export const addNote =
   (title: string, content: string) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(noteSlice.actions.addNote());
+      dispatch(noteSlice.actions.enableLoading());
       const response = await NoteService.addNote(title, content);
       dispatch(noteSlice.actions.addNoteSuccess(response.data));
     } catch (e) {
-      dispatch(noteSlice.actions.addNoteError((e as Error).message));
+      dispatch(noteSlice.actions.setError((e as Error).message));
     }
   };
 
 export const updateNote = (note: INote) => async (dispatch: AppDispatch) => {
   try {
-    dispatch(noteSlice.actions.updateNote());
+    dispatch(noteSlice.actions.enableLoading());
     const response = await NoteService.updateNote(note);
     dispatch(noteSlice.actions.updateNoteSuccess(response.data));
   } catch (e) {
-    dispatch(noteSlice.actions.updateNoteError((e as Error).message));
+    dispatch(noteSlice.actions.setError((e as Error).message));
   }
 };
 
 export const deleteNote = (id: string) => async (dispatch: AppDispatch) => {
   try {
-    dispatch(noteSlice.actions.deleteNote());
+    dispatch(noteSlice.actions.enableLoading());
     const response = await NoteService.deleteNote(id);
     dispatch(noteSlice.actions.deleteNoteSuccess(response.data));
   } catch (e) {
-    dispatch(noteSlice.actions.deleteNoteError((e as Error).message));
+    dispatch(noteSlice.actions.setError((e as Error).message));
   }
 };

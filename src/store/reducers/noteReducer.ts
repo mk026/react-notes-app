@@ -18,30 +18,20 @@ export const noteSlice = createSlice({
   name: "note",
   initialState,
   reducers: {
-    fetchNotes(state) {
+    enableLoading(state) {
       state.isLoading = true;
     },
     fetchNotesSuccess(state, action: PayloadAction<INote[]>) {
       state.isLoading = false;
       state.notes = action.payload;
     },
-    fetchNotesError(state, action: PayloadAction<string>) {
+    setError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
-    },
-    addNote(state) {
-      state.isLoading = true;
     },
     addNoteSuccess(state, action: PayloadAction<INote>) {
       state.isLoading = false;
       state.notes.push(action.payload);
-    },
-    addNoteError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    updateNote(state) {
-      state.isLoading = true;
     },
     updateNoteSuccess(state, action: PayloadAction<INote>) {
       const noteId = action.payload._id;
@@ -49,22 +39,11 @@ export const noteSlice = createSlice({
       state.notes[oldNoteIdx] = action.payload;
       state.isLoading = false;
     },
-    updateNoteError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    deleteNote(state) {
-      state.isLoading = true;
-    },
     deleteNoteSuccess(state, action: PayloadAction<INote>) {
       state.isLoading = false;
       state.notes = state.notes.filter(
         (note) => note._id !== action.payload._id
       );
-    },
-    deleteNoteError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });
