@@ -1,7 +1,13 @@
-import { FC, FormEvent, useState } from "react";
+import { FC } from "react";
+import { useFormik } from "formik";
 
 import { useActions } from "../../../hooks/useActions";
 import { INote } from "../../../models/INote";
+import {
+  noteFormInitialValues,
+  NoteFormValues,
+  noteValidationSchema,
+} from "../../../validation/noteValidation";
 
 interface EditNoteFormProps {
   note: INote;
@@ -9,30 +15,39 @@ interface EditNoteFormProps {
 }
 
 const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
+    useFormik<NoteFormValues>({
+      initialValues: noteFormInitialValues,
+      validationSchema: noteValidationSchema,
+      onSubmit: (values) => editNoteHandler(values),
+    });
   const { updateNote } = useActions();
 
-  const editNoteHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const editNoteHandler = ({ title, content }: NoteFormValues) => {
     updateNote({ _id: note._id, title, content });
   };
 
   return (
-    <form onSubmit={editNoteHandler}>
-      <label htmlFor="edit-note-title">New note title</label>
+    <form onSubmit={handleSubmit}>
+      {touched.title && errors.title && <div>{errors.title}</div>}
+      <label htmlFor="title">New note title</label>
       <input
-        id="edit-note-title"
+        id="title"
+        name="title"
         type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={values.title}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
-      <label htmlFor="edit-note-content">New note content</label>
+      {touched.content && errors.content && <div>{errors.content}</div>}
+      <label htmlFor="content">New note content</label>
       <input
-        id="edit-note-content"
+        id="content"
+        name="content"
         type="text"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
+        value={values.content}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <button type="submit">Save</button>
       <button onClick={onClose}>Close</button>
