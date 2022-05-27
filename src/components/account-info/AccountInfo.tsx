@@ -11,11 +11,11 @@ import ChangePasswordForm from "../forms/change-password-form/ChangePasswordForm
 
 const AccountInfo: FC = () => {
   const { user } = useAppSelector(getUserState);
-  const { signout } = useActions();
+  const { deleteAccount } = useActions();
   const navigate = useNavigate();
 
-  const signoutHandler = () => {
-    signout();
+  const deleteAccountHandler = () => {
+    deleteAccount();
     navigate(Paths.HOME_PATH);
   };
 
@@ -33,7 +33,7 @@ const AccountInfo: FC = () => {
         <p>Update password</p>
         <ChangePasswordForm />
       </div>
-      <button onClick={signoutHandler}>Signout</button>
+      <button onClick={deleteAccountHandler}>Delete account</button>
     </div>
   );
 };
