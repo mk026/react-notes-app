@@ -31,6 +31,10 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload;
     },
+    removeUserSuccess(state) {
+      state.isLoading = false;
+      state.user = null;
+    },
     setError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;

@@ -17,4 +17,8 @@ export default class UserService {
   ): Promise<AxiosResponse<IUser>> {
     return authApi.put<IUser>(ApiEndpoints.USERS, { oldPassword, newPassword });
   }
+
+  static async deleteAccount(): Promise<AxiosResponse> {
+    return authApi.delete(ApiEndpoints.USERS);
+  }
 }

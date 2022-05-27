@@ -1,6 +1,7 @@
 import { AppDispatch } from "..";
+import AuthService from "../../services/AuthService";
 import UserService from "../../services/UserService";
-import { userSlice } from "../reducers";
+import { authSlice, userSlice } from "../reducers";
 
 export const updateName = (name: string) => async (dispatch: AppDispatch) => {
   try {
@@ -36,3 +37,15 @@ export const updatePassword =
       dispatch(userSlice.actions.setError((e as Error).message));
     }
   };
+
+export const deleteAccount = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(userSlice.actions.enableLoading());
+    await UserService.deleteAccount();
+    dispatch(userSlice.actions.removeUserSuccess());
+    AuthService.removeStoredToken();
+    dispatch(authSlice.actions.signout());
+  } catch (e) {
+    dispatch(userSlice.actions.setError((e as Error).message));
+  }
+};
