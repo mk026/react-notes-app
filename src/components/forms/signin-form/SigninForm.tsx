@@ -17,12 +17,19 @@ interface SigninFormProps {
 }
 
 const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<SigninFormValues>({
-      initialValues: signinFormInitialValues,
-      validationSchema: signinValidationSchema,
-      onSubmit: (values) => signinHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    handleReset,
+  } = useFormik<SigninFormValues>({
+    initialValues: signinFormInitialValues,
+    validationSchema: signinValidationSchema,
+    onSubmit: (values) => signinHandler(values),
+  });
   const { signin } = useActions();
   const { isAuth } = useAppSelector(getAuthState);
   const navigate = useNavigate();
@@ -38,7 +45,7 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} onReset={handleReset}>
       {touched.email && errors.email && <div>{errors.email}</div>}
       <label htmlFor="email">Enter your email</label>
       <input
@@ -60,6 +67,7 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
         onBlur={handleBlur}
       />
       <button type="submit">Signin</button>
+      <button type="reset">Clear</button>
       <p>
         Don't have an account? <button onClick={switchToSignup}>Signup</button>
       </p>
