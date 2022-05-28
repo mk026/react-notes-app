@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
 
+import Button from "../../ui/button/Button";
+import EditTodoForm from "../../forms/edit-todo-form/EditTodoForm";
 import { ITodo } from "../../../models/ITodo";
 import { useActions } from "../../../hooks/useActions";
-import EditTodoForm from "../../forms/edit-todo-form/EditTodoForm";
 
 interface TodoItemProps {
   todo: ITodo;
@@ -21,8 +22,8 @@ const TodoItem: FC<TodoItemProps> = ({ todo }) => {
       <div>
         <input type="checkbox" checked={todo.completed} />
         <p>{todo.title}</p>
-        <button onClick={toggleEditForm}>Edit</button>
-        <button onClick={deleteTodoHandler}>Delete</button>
+        <Button onClick={toggleEditForm}>Edit</Button>
+        <Button onClick={deleteTodoHandler}>Delete</Button>
       </div>
     </>
   );

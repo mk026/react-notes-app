@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
 
+import Button from "../../ui/button/Button";
+import EditNoteForm from "../../forms/edit-note-form/EditNoteForm";
 import { INote } from "../../../models/INote";
 import { useActions } from "../../../hooks/useActions";
-import EditNoteForm from "../../forms/edit-note-form/EditNoteForm";
 
 interface NoteItemProps {
   note: INote;
@@ -21,8 +22,8 @@ const NoteItem: FC<NoteItemProps> = ({ note }) => {
       <div>
         <p>{note.title}</p>
         <p>{note.content}</p>
-        <button onClick={toggleEditForm}>Edit</button>
-        <button onClick={deleteNoteHandler}>Delete</button>
+        <Button onClick={toggleEditForm}>Edit</Button>
+        <Button onClick={deleteNoteHandler}>Delete</Button>
       </div>
     </>
   );
