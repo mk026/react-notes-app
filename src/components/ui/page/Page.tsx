@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-import classes from "./Page.module.css";
+import classes from "./Page.module.scss";
 
 interface PageProps {
   children: ReactNode;

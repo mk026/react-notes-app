@@ -1,8 +1,10 @@
+@import "../../styles/variables.scss";
+
 .navbar {
   display: flex;
   justify-content: space-between;
 
-  background-color: #323a42;
+  background-color: $darkBlue;
 }
 
 .navbar__link {

@@ -6,7 +6,7 @@ import { Paths } from "../../routes/types";
 import { getAuthState } from "../../store/selectors";
 import UserStatus from "../user-status/UserStatus";
 
-import classes from "./Navbar.module.css";
+import classes from "./Navbar.module.scss";
 
 const Navbar: FC = () => {
   const { isAuth } = useAppSelector(getAuthState);
