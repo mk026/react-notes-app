@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 
+import Button from "../../ui/button/Button";
 import { useActions } from "../../../hooks/useActions";
 import {
   changeEmailFormInitialValues,
@@ -33,7 +34,7 @@ const ChangeEmailForm: FC = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <button type="submit">Save</button>
+      <Button type="submit">Save</Button>
     </form>
   );
 };
