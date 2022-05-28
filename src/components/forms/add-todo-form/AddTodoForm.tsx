@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 
+import Button from "../../ui/button/Button";
 import { useActions } from "../../../hooks/useActions";
 import {
   todoFormInitialValues,
@@ -33,7 +34,7 @@ const AddTodoForm: FC = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <button type="submit">Add todo</button>
+      <Button type="submit">Add todo</Button>
     </form>
   );
 };
