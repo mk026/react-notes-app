@@ -10,6 +10,7 @@ export const authRoutes: IRoute[] = [
   { path: Paths.NOTES_PATH, Component: NotesPage },
   { path: Paths.TODOS_PATH, Component: TodosPage },
   { path: Paths.ACCOUNT_PATH, Component: AccountPage },
+  { path: Paths.AUTH_PATH, Component: AuthPage },
 ];
 
 export const publicRoutes: IRoute[] = [

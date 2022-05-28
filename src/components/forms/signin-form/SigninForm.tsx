@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,8 @@ import {
   signinValidationSchema,
 } from "../../../validation/signinValidation";
 import { Paths } from "../../../routes/types";
+import { useAppSelector } from "../../../hooks/redux";
+import { getAuthState } from "../../../store/selectors";
 
 interface SigninFormProps {
   switchToSignup: () => void;
@@ -22,11 +24,17 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
       onSubmit: (values) => signinHandler(values),
     });
   const { signin } = useActions();
+  const { isAuth } = useAppSelector(getAuthState);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate(Paths.HOME_PATH, { replace: true });
+    }
+  }, [isAuth, navigate]);
 
   const signinHandler = ({ email, password }: SigninFormValues) => {
     signin(email, password);
-    navigate(Paths.HOME_PATH);
   };
 
   return (
