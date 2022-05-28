@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
+import Button from "../../ui/button/Button";
 import { useActions } from "../../../hooks/useActions";
 import {
   signinFormInitialValues,
@@ -66,8 +67,8 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <button type="submit">Signin</button>
-      <button type="reset">Clear</button>
+      <Button type="submit">Signin</Button>
+      <Button type="reset">Clear</Button>
       <p>
         Don't have an account? <button onClick={switchToSignup}>Signup</button>
       </p>
