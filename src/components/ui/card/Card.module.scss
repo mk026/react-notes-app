@@ -1,4 +1,8 @@
+@import "../../../styles/variables.scss";
+
 .card {
-  background-color: #63707c;
+  padding: 10px;
+
+  background-color: $lightgray;
   border-radius: 10px;
 }

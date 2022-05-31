@@ -5,6 +5,8 @@ import { useActions } from "../../../hooks/useActions";
 import { getNoteState } from "../../../store/selectors";
 import NoteItem from "../note-item/NoteItem";
 
+import classes from "./NotesList.module.scss";
+
 const NotesList: FC = () => {
   const { notes, isLoading, error } = useAppSelector(getNoteState);
   const { fetchNotes } = useActions();
@@ -26,7 +28,7 @@ const NotesList: FC = () => {
   }
 
   return (
-    <div>
+    <div className={classes["notes-list"]}>
       {notes.map((note) => (
         <NoteItem key={note._id} note={note} />
       ))}

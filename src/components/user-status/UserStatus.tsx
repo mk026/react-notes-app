@@ -6,7 +6,7 @@ import { useActions } from "../../hooks/useActions";
 import { Paths } from "../../routes/types";
 import { getUserState } from "../../store/selectors";
 
-import classes from "./UserStatus.module.css";
+import classes from "./UserStatus.module.scss";
 
 const UserStatus: FC = () => {
   const { user } = useAppSelector(getUserState);

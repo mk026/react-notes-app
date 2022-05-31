@@ -4,10 +4,11 @@ import classes from "./Card.module.scss";
 
 interface CardProps {
   children?: ReactNode;
+  className?: string;
 }
 
-const Card: FC<CardProps> = ({ children }) => {
-  return <div className={classes.card}>{children}</div>;
+const Card: FC<CardProps> = ({ children, className }) => {
+  return <div className={`${classes.card} ${className}`}>{children}</div>;
 };
 
 export default Card;

@@ -7,7 +7,7 @@ interface PageProps {
 }
 
 const Page: FC<PageProps> = ({ children }) => {
-  return <div className={classes.page}>{children}</div>;
+  return <main className={classes.page}>{children}</main>;
 };
 
 export default Page;

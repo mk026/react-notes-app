@@ -5,6 +5,8 @@ import { useActions } from "../../../hooks/useActions";
 import { getTodoState } from "../../../store/selectors";
 import TodoItem from "../todo-item/TodoItem";
 
+import classes from "./TodoList.module.scss";
+
 const TodosList: FC = () => {
   const { todos, isLoading, error } = useAppSelector(getTodoState);
   const { fetchTodos } = useActions();
@@ -26,7 +28,7 @@ const TodosList: FC = () => {
   }
 
   return (
-    <div>
+    <div className={classes["todos-list"]}>
       {todos.map((todo) => (
         <TodoItem key={todo._id} todo={todo} />
       ))}

@@ -1,0 +1,15 @@
+.todo {
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 600px;
+  margin: 20px auto;
+  justify-content: space-between;
+}
+
+.todo__title {
+  font-weight: bold;
+}
+
+.todo__controls {
+  align-self: center;
+}
