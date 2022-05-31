@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import {
   signupFormInitialValues,
@@ -49,7 +50,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
     <form onSubmit={handleSubmit} onReset={handleReset}>
       {touched.name && errors.name && <div>{errors.name}</div>}
       <label htmlFor="name">Enter your name</label>
-      <input
+      <Input
         id="name"
         name="name"
         type="text"
@@ -59,7 +60,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
       />
       {touched.email && errors.email && <div>{errors.email}</div>}
       <label htmlFor="email">Enter your email</label>
-      <input
+      <Input
         id="email"
         name="email"
         type="text"
@@ -69,7 +70,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
       />
       {touched.password && errors.password && <div>{errors.password}</div>}
       <label htmlFor="password">Enter your password</label>
-      <input
+      <Input
         id="password"
         name="password"
         type="password"
@@ -81,7 +82,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
         <div>{errors.confirmPassword}</div>
       )}
       <label htmlFor="confirmPassword">Confirm your password</label>
-      <input
+      <Input
         id="confirmPassword"
         name="confirmPassword"
         type="password"

@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 
+import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import { INote } from "../../../models/INote";
 import {
@@ -31,7 +33,7 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
     <form onSubmit={handleSubmit}>
       {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">New note title</label>
-      <input
+      <Input
         id="title"
         name="title"
         type="text"
@@ -41,7 +43,7 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
       />
       {touched.content && errors.content && <div>{errors.content}</div>}
       <label htmlFor="content">New note content</label>
-      <input
+      <Input
         id="content"
         name="content"
         type="text"
@@ -49,8 +51,8 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <button type="submit">Save</button>
-      <button onClick={onClose}>Close</button>
+      <Button type="submit">Save</Button>
+      <Button onClick={onClose}>Close</Button>
     </form>
   );
 };

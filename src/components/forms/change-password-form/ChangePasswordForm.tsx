@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import {
   changePasswordFormInitialValues,
   ChangePasswordFormValues,
@@ -31,7 +32,7 @@ const ChangePasswordForm: FC = () => {
         <div>{errors.oldPassword}</div>
       )}
       <label htmlFor="oldPassword">Enter your current password</label>
-      <input
+      <Input
         id="oldPassword"
         name="oldPassword"
         type="password"
@@ -43,7 +44,7 @@ const ChangePasswordForm: FC = () => {
         <div>{errors.newPassword}</div>
       )}
       <label htmlFor="newPassword">Enter new password</label>
-      <input
+      <Input
         id="newPassword"
         name="newPassword"
         type="password"
@@ -55,7 +56,7 @@ const ChangePasswordForm: FC = () => {
         <div>{errors.confirmPassword}</div>
       )}
       <label htmlFor="confirmPassword">Confirm new password</label>
-      <input
+      <Input
         id="confirmPassword"
         name="confirmPassword"
         type="password"

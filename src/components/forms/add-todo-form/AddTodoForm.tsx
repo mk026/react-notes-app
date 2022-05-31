@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import {
   todoFormInitialValues,
@@ -26,7 +27,7 @@ const AddTodoForm: FC = () => {
     <form onSubmit={handleSubmit}>
       {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">Todo title</label>
-      <input
+      <Input
         id="title"
         name="title"
         type="text"

@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 
+import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import { ITodo } from "../../../models/ITodo";
 import {
@@ -30,7 +32,7 @@ const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
   return (
     <form onSubmit={handleSubmit}>
       {touched.title && errors.title && <div>{errors.title}</div>}
-      <input
+      <Input
         id="title"
         name="title"
         type="text"
@@ -39,8 +41,8 @@ const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <button type="submit">Save</button>
-      <button onClick={onClose}>Cancel</button>
+      <Button type="submit">Save</Button>
+      <Button onClick={onClose}>Cancel</Button>
     </form>
   );
 };

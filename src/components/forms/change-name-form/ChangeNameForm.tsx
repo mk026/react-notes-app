@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import {
   changeNameFormInitialValues,
@@ -25,7 +26,7 @@ const ChangeNameForm: FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       {touched.name && errors.name && <div>{errors.name}</div>}
-      <input
+      <Input
         id="name"
         name="name"
         type="text"

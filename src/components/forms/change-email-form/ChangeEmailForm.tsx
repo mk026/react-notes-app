@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import {
   changeEmailFormInitialValues,
@@ -25,7 +26,7 @@ const ChangeEmailForm: FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       {touched.email && errors.email && <div>{errors.email}</div>}
-      <input
+      <Input
         id="email"
         name="email"
         type="text"

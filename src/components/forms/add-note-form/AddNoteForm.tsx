@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
+import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import {
   noteFormInitialValues,
@@ -26,7 +27,7 @@ const AddNoteForm: FC = () => {
     <form onSubmit={handleSubmit}>
       {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">Note title</label>
-      <input
+      <Input
         id="title"
         name="title"
         type="text"
@@ -36,7 +37,7 @@ const AddNoteForm: FC = () => {
       />
       {touched.content && errors.content && <div>{errors.content}</div>}
       <label htmlFor="content">Note content</label>
-      <input
+      <Input
         id="content"
         name="content"
         type="text"
