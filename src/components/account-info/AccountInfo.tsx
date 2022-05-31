@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux";
@@ -8,11 +8,21 @@ import { getUserState } from "../../store/selectors";
 import ChangeEmailForm from "../forms/change-email-form/ChangeEmailForm";
 import ChangeNameForm from "../forms/change-name-form/ChangeNameForm";
 import ChangePasswordForm from "../forms/change-password-form/ChangePasswordForm";
+import Button from "../ui/button/Button";
 
 const AccountInfo: FC = () => {
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [isEditingPassword, setIsEditingPassword] = useState(false);
+
   const { user } = useAppSelector(getUserState);
   const { deleteAccount } = useActions();
   const navigate = useNavigate();
+
+  const toggleEditNameFormHandler = () => setIsEditingName((prev) => !prev);
+  const toggleEditEmailFormHandler = () => setIsEditingEmail((prev) => !prev);
+  const toggleEditPasswordFormHandler = () =>
+    setIsEditingPassword((prev) => !prev);
 
   const deleteAccountHandler = () => {
     deleteAccount();
@@ -23,17 +33,25 @@ const AccountInfo: FC = () => {
     <div>
       <div>
         <p>{user?.name}</p>
-        <ChangeNameForm />
+        <Button onClick={toggleEditNameFormHandler}>Edit</Button>
+        {isEditingName && (
+          <ChangeNameForm onClose={toggleEditNameFormHandler} />
+        )}
       </div>
       <div>
         <p>{user?.email}</p>
-        <ChangeEmailForm />
+        <Button onClick={toggleEditEmailFormHandler}>Edit</Button>
+        {isEditingEmail && (
+          <ChangeEmailForm onClose={toggleEditEmailFormHandler} />
+        )}
       </div>
       <div>
-        <p>Update password</p>
-        <ChangePasswordForm />
+        <Button onClick={toggleEditPasswordFormHandler}>Update password</Button>
+        {isEditingPassword && (
+          <ChangePasswordForm onClose={toggleEditPasswordFormHandler} />
+        )}
       </div>
-      <button onClick={deleteAccountHandler}>Delete account</button>
+      <Button onClick={deleteAccountHandler}>Delete account</Button>
     </div>
   );
 };

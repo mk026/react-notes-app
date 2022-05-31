@@ -10,7 +10,11 @@ import {
 } from "../../../validation/changePasswordValidation";
 import { useActions } from "../../../hooks/useActions";
 
-const ChangePasswordForm: FC = () => {
+interface ChangePasswordFormProps {
+  onClose: () => void;
+}
+
+const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<ChangePasswordFormValues>({
       initialValues: changePasswordFormInitialValues,
@@ -65,6 +69,7 @@ const ChangePasswordForm: FC = () => {
         onBlur={handleBlur}
       />
       <Button type="submit">Save</Button>
+      <Button onClick={onClose}>Cancel</Button>
     </form>
   );
 };

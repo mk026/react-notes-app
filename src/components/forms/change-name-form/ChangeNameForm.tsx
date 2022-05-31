@@ -10,7 +10,11 @@ import {
   changeNameValidationSchema,
 } from "../../../validation/changeNameValidation";
 
-const ChangeNameForm: FC = () => {
+interface ChangeNameFormProps {
+  onClose: () => void;
+}
+
+const ChangeNameForm: FC<ChangeNameFormProps> = ({ onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<ChangeNameFormValues>({
       initialValues: changeNameFormInitialValues,
@@ -36,6 +40,7 @@ const ChangeNameForm: FC = () => {
         onBlur={handleBlur}
       />
       <Button type="submit">Save</Button>
+      <Button onClick={onClose}>Cancel</Button>
     </form>
   );
 };

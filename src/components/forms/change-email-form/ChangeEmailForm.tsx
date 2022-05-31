@@ -10,7 +10,11 @@ import {
   changeEmailValidationSchema,
 } from "../../../validation/changeEmailValidation";
 
-const ChangeEmailForm: FC = () => {
+interface ChangeEmailFormProps {
+  onClose: () => void;
+}
+
+const ChangeEmailForm: FC<ChangeEmailFormProps> = ({ onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<ChangeEmailFormValues>({
       initialValues: changeEmailFormInitialValues,
@@ -36,6 +40,7 @@ const ChangeEmailForm: FC = () => {
         onBlur={handleBlur}
       />
       <Button type="submit">Save</Button>
+      <Button onClick={onClose}>Cancel</Button>
     </form>
   );
 };
