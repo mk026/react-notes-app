@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+import { nameRules } from "./rules";
+
 export interface ChangeNameFormValues {
   name: string;
 }
@@ -9,5 +11,9 @@ export const changeNameFormInitialValues: ChangeNameFormValues = {
 };
 
 export const changeNameValidationSchema = yup.object({
-  name: yup.string().required(),
+  name: yup
+    .string()
+    .min(nameRules.minLength)
+    .max(nameRules.maxLength)
+    .required(),
 });
