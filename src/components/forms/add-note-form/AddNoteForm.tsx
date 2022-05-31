@@ -10,7 +10,11 @@ import {
   noteValidationSchema,
 } from "../../../validation/noteValidation";
 
-const AddNoteForm: FC = () => {
+interface AddNoteFormProps {
+  onClose: () => void;
+}
+
+const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<NoteFormValues>({
       initialValues: noteFormInitialValues,
@@ -46,6 +50,7 @@ const AddNoteForm: FC = () => {
         onBlur={handleBlur}
       />
       <Button type="submit">Add todo</Button>
+      <Button onClick={onClose}>Cancel</Button>
     </form>
   );
 };

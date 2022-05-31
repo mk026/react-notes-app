@@ -10,7 +10,11 @@ import {
   todoValidationSchema,
 } from "../../../validation/todoValidation";
 
-const AddTodoForm: FC = () => {
+interface AddTodoFormProps {
+  onClose: () => void;
+}
+
+const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<TodoFormValues>({
       initialValues: todoFormInitialValues,
@@ -36,6 +40,7 @@ const AddTodoForm: FC = () => {
         onBlur={handleBlur}
       />
       <Button type="submit">Add todo</Button>
+      <Button onClick={onClose}>Cancel</Button>
     </form>
   );
 };
