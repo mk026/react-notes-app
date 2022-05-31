@@ -11,16 +11,22 @@ interface TodoItemProps {
 
 const TodoItem: FC<TodoItemProps> = ({ todo }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const { deleteTodo } = useActions();
+  const { updateTodo, deleteTodo } = useActions();
 
   const toggleEditForm = () => setIsEditing((prev) => !prev);
   const deleteTodoHandler = () => deleteTodo(todo._id);
+  const changeTodoStatus = () =>
+    updateTodo({ ...todo, completed: !todo.completed });
 
   return (
     <>
       {isEditing && <EditTodoForm todo={todo} onClose={toggleEditForm} />}
       <div>
-        <input type="checkbox" checked={todo.completed} />
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={changeTodoStatus}
+        />
         <p>{todo.title}</p>
         <Button onClick={toggleEditForm}>Edit</Button>
         <Button onClick={deleteTodoHandler}>Delete</Button>
