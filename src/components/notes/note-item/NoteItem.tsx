@@ -26,8 +26,10 @@ const NoteItem: FC<NoteItemProps> = ({ note }) => {
         <p className={classes["note__title"]}>{note.title}</p>
         <hr className={classes["note__hr"]} />
         <p>{note.content}</p>
-        <Button onClick={toggleEditForm}>Edit</Button>
-        <Button onClick={deleteNoteHandler}>Delete</Button>
+        <div className={classes["note__controls"]}>
+          <Button onClick={toggleEditForm}>Edit</Button>
+          <Button onClick={deleteNoteHandler}>Delete</Button>
+        </div>
       </Card>
     </>
   );

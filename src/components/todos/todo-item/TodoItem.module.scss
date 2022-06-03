@@ -11,5 +11,9 @@
 }
 
 .todo__controls {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   align-self: center;
+  flex: 0 0 110px;
 }

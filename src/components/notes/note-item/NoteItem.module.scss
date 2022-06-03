@@ -14,3 +14,10 @@
 .note__hr {
   margin: 0;
 }
+
+.note__controls {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 110px;
+}

@@ -1,5 +1,14 @@
+@import "../../../styles/variables.scss";
+
 .button {
   padding: 10px;
 
   border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: $neutral;
+
+  &:hover {
+    background-color: darken($neutral, 10);
+  }
 }
