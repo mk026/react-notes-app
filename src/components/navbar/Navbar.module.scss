@@ -28,34 +28,3 @@
     background-color: #242a30;
   }
 }
-
-%decoration-line {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff;
-}
-
-.menu-btn {
-  position: relative;
-  margin: auto 10px;
-  height: 20px;
-  width: 40px;
-  cursor: pointer;
-
-  &::before {
-    top: 0;
-    @extend %decoration-line;
-  }
-
-  &::after {
-    bottom: 0;
-    @extend %decoration-line;
-  }
-
-  span {
-    top: 9px;
-    @extend %decoration-line;
-  }
-}
