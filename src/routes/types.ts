@@ -11,4 +11,5 @@ export enum Paths {
 export interface IRoute {
   path: Paths;
   Component: ComponentType;
+  name: string;
 }
