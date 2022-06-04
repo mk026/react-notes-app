@@ -19,16 +19,19 @@ const Navbar: FC = () => {
       : classes.navbar__link;
 
   return (
-    <nav className={classes.navbar}>
-      <div>
+    <header className={classes.navbar}>
+      <div className={classes["menu-btn"]}>
+        <span />
+      </div>
+      <nav>
         {routes.map(({ path, name }) => (
           <NavLink key={path} className={getLinkStyles} to={path}>
             {name}
           </NavLink>
         ))}
-      </div>
+      </nav>
       {isAuth && <UserStatus />}
-    </nav>
+    </header>
   );
 };
 
