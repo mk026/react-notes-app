@@ -2,9 +2,13 @@ import { FC } from "react";
 
 import classes from "./MenuButton.module.scss";
 
-const MenuButton: FC = () => {
+interface MenuButtonProps {
+  onClick: () => void;
+}
+
+const MenuButton: FC<MenuButtonProps> = ({ onClick }) => {
   return (
-    <div className={classes["menu-btn"]}>
+    <div className={classes["menu-btn"]} onClick={onClick}>
       <span />
     </div>
   );
