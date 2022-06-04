@@ -3,9 +3,10 @@
   top: 62px;
   width: 100vw;
   height: 100vh;
+  display: none;
+
   background-color: black;
   opacity: 0.5;
-  display: none;
 
   &.active {
     display: block;
@@ -25,5 +26,9 @@
   &.active {
     display: flex;
     flex-flow: column nowrap;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 100vw;
   }
 }

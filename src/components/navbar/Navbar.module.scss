@@ -1,10 +1,17 @@
 @import "../../styles/variables.scss";
 
-.navbar {
+.header {
+  min-height: 62px;
   display: flex;
   justify-content: space-between;
 
   background-color: $darkBlue;
+}
+
+.navbar {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .navbar__link {

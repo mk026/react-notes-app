@@ -28,12 +28,12 @@ const Navbar: FC = () => {
   ));
 
   return (
-    <header className={classes.navbar}>
+    <header className={classes.header}>
       <MenuButton onClick={toggleMenu} />
       <NavMenu isActive={menuIsActive} onClose={toggleMenu}>
         {links}
       </NavMenu>
-      <nav>{links}</nav>
+      <nav className={classes.navbar}>{links}</nav>
       {isAuth && <UserStatus />}
     </header>
   );
