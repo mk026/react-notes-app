@@ -1,6 +1,10 @@
 .note {
-  flex: 1 0 400px;
+  flex: 1 1 324px;
   margin: 10px;
+
+  @media screen and (max-width: 768px) {
+    flex-grow: 1;
+  }
 }
 
 .note__title {
