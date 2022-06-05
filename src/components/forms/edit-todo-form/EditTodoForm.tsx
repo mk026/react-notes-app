@@ -6,7 +6,6 @@ import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
 import { ITodo } from "../../../models/ITodo";
 import {
-  todoFormInitialValues,
   TodoFormValues,
   todoValidationSchema,
 } from "../../../validation/todoValidation";
@@ -19,7 +18,7 @@ interface EditTodoFormProps {
 const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<TodoFormValues>({
-      initialValues: todoFormInitialValues,
+      initialValues: { title: todo.title },
       validationSchema: todoValidationSchema,
       onSubmit: (values) => editTodoHandler(values),
     });
