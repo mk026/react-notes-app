@@ -13,8 +13,7 @@ const NotesPage: FC = () => {
 
   return (
     <Page>
-      <PageTop>
-        <h1>Notes</h1>
+      <PageTop title="My Notes">
         <Button onClick={toggleAddNoteFormHandler}>Add new note</Button>
       </PageTop>
       {isAddingNote && <AddNoteForm onClose={toggleAddNoteFormHandler} />}

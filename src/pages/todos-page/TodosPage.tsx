@@ -13,8 +13,7 @@ const TodosPage: FC = () => {
 
   return (
     <Page>
-      <PageTop>
-        <h1>Todos</h1>
+      <PageTop title="My Todos">
         <Button onClick={toggleAddTodoFormHandler}>Add new todo</Button>
       </PageTop>
       {isAddingTodo && <AddTodoForm onClose={toggleAddTodoFormHandler} />}

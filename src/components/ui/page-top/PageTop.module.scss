@@ -3,6 +3,17 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  margin: 10px;
+  padding-bottom: 10px;
 
   border-bottom: 1px solid black;
+}
+
+.page-top__title {
+  margin: 0;
+  padding: 0;
+
+  @media screen and(max-width: 768px) {
+    display: none;
+  }
 }
