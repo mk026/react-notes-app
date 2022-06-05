@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import Navbar from "./components/navbar/Navbar";
+import Header from "./components/header/Header";
 import AppRouter from "./components/app-router/AppRouter";
 import { useActions } from "./hooks/useActions";
 import { useAppSelector } from "./hooks/redux";
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Header />
       <AppRouter />
     </>
   );

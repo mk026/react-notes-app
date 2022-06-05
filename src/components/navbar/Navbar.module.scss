@@ -1,14 +1,13 @@
-@import "../../styles/variables.scss";
-
-.header {
-  min-height: 62px;
-  display: flex;
-  justify-content: space-between;
-
-  background-color: $darkBlue;
-}
-
 .navbar {
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
