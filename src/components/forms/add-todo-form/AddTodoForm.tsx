@@ -40,7 +40,9 @@ const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
         onBlur={handleBlur}
       />
       <Button type="submit">Add todo</Button>
-      <Button onClick={onClose}>Cancel</Button>
+      <Button type="button" onClick={onClose}>
+        Cancel
+      </Button>
     </form>
   );
 };

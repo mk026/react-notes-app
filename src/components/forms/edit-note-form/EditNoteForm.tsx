@@ -52,7 +52,9 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
         onBlur={handleBlur}
       />
       <Button type="submit">Save</Button>
-      <Button onClick={onClose}>Close</Button>
+      <Button type="button" onClick={onClose}>
+        Close
+      </Button>
     </form>
   );
 };

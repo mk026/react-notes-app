@@ -69,7 +69,9 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
         onBlur={handleBlur}
       />
       <Button type="submit">Save</Button>
-      <Button onClick={onClose}>Cancel</Button>
+      <Button type="button" onClick={onClose}>
+        Cancel
+      </Button>
     </form>
   );
 };

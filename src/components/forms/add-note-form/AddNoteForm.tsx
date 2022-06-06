@@ -50,7 +50,9 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
         onBlur={handleBlur}
       />
       <Button type="submit">Add note</Button>
-      <Button onClick={onClose}>Cancel</Button>
+      <Button type="button" onClick={onClose}>
+        Cancel
+      </Button>
     </form>
   );
 };
