@@ -2,6 +2,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import { IRoute } from "../../routes/types";
+import Backdrop from "../ui/backdrop/Backdrop";
 
 import classes from "./NavMenu.module.scss";
 
@@ -15,9 +16,6 @@ const NavMenu: FC<NavMenuProps> = ({ routes, isActive, onClose }) => {
   const menuStyles = isActive
     ? `${classes["nav-menu"]} ${classes["active"]}`
     : classes["nav-menu"];
-  const backdropStyles = isActive
-    ? `${classes["backdrop"]} ${classes["active"]}`
-    : classes["backdrop"];
 
   const getLinkStyles = ({ isActive }: { isActive: boolean }) =>
     isActive
@@ -26,7 +24,7 @@ const NavMenu: FC<NavMenuProps> = ({ routes, isActive, onClose }) => {
 
   return (
     <>
-      <div className={backdropStyles} onClick={onClose}></div>
+      <Backdrop isActive={isActive} onClick={onClose} />
       <nav className={menuStyles}>
         <ul>
           {routes.map(({ path, name }) => (
