@@ -1,13 +1,4 @@
 .nav-menu {
-  position: fixed;
-  top: 62px;
-  left: 0;
-  width: 50vw;
-  height: 100vh;
-  display: none;
-
-  background-color: black;
-
   ul {
     display: flex;
     flex-flow: column nowrap;
@@ -21,15 +12,6 @@
     li {
       width: 100%;
     }
-  }
-
-  &.active {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-
-  @media screen and (max-width: 400px) {
-    width: 100vw;
   }
 }
 

@@ -1,0 +1,27 @@
+%drawer {
+  position: fixed;
+  top: 62px;
+  width: 50vw;
+  height: 100vh;
+  display: none;
+
+  background-color: black;
+
+  &.active {
+    display: block;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 100vw;
+  }
+}
+
+.drawer--left {
+  left: 0;
+  @extend %drawer;
+}
+
+.drawer--right {
+  right: 0;
+  @extend %drawer;
+}

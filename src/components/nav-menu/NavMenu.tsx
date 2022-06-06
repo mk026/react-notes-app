@@ -2,7 +2,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import { IRoute } from "../../routes/types";
-import Backdrop from "../ui/backdrop/Backdrop";
+import Drawer, { DrawerPosition } from "../ui/drawer/Drawer";
 
 import classes from "./NavMenu.module.scss";
 
@@ -13,19 +13,18 @@ interface NavMenuProps {
 }
 
 const NavMenu: FC<NavMenuProps> = ({ routes, isActive, onClose }) => {
-  const menuStyles = isActive
-    ? `${classes["nav-menu"]} ${classes["active"]}`
-    : classes["nav-menu"];
-
   const getLinkStyles = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? classes["nav-menu__link"] + " " + classes.active
       : classes["nav-menu__link"];
 
   return (
-    <>
-      <Backdrop isActive={isActive} onClick={onClose} />
-      <nav className={menuStyles}>
+    <Drawer
+      isActive={isActive}
+      onClose={onClose}
+      position={DrawerPosition.LEFT}
+    >
+      <nav className={classes["nav-menu"]}>
         <ul>
           {routes.map(({ path, name }) => (
             <li key={path}>
@@ -36,7 +35,7 @@ const NavMenu: FC<NavMenuProps> = ({ routes, isActive, onClose }) => {
           ))}
         </ul>
       </nav>
-    </>
+    </Drawer>
   );
 };
 
