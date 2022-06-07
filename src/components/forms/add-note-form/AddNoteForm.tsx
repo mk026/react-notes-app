@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
+import Textarea from "../../ui/textarea/Textarea";
 import { useActions } from "../../../hooks/useActions";
 import {
   noteFormInitialValues,
@@ -41,13 +42,14 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
       />
       {touched.content && errors.content && <div>{errors.content}</div>}
       <label htmlFor="content">Note content</label>
-      <Input
+      <Textarea
         id="content"
         name="content"
-        type="text"
         value={values.content}
         onChange={handleChange}
         onBlur={handleBlur}
+        cols={40}
+        rows={6}
       />
       <Button type="submit">Add note</Button>
       <Button type="button" onClick={onClose}>
