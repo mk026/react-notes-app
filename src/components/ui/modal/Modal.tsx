@@ -12,10 +12,13 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ children, isActive, onClose }) => {
+  const styles = isActive
+    ? `${classes.modal} ${classes.active}`
+    : classes.modal;
   return (
     <>
       <Backdrop isActive={isActive} onClick={onClose} />
-      <Card className={classes.modal}>{children}</Card>
+      <Card className={styles}>{children}</Card>
     </>
   );
 };
