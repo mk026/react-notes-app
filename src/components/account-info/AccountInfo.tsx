@@ -9,11 +9,13 @@ import ChangeEmailForm from "../forms/change-email-form/ChangeEmailForm";
 import ChangeNameForm from "../forms/change-name-form/ChangeNameForm";
 import ChangePasswordForm from "../forms/change-password-form/ChangePasswordForm";
 import Button from "../ui/button/Button";
+import Modal from "../ui/modal/Modal";
 
 const AccountInfo: FC = () => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const { user } = useAppSelector(getUserState);
   const { deleteAccount } = useActions();
@@ -23,9 +25,11 @@ const AccountInfo: FC = () => {
   const toggleEditEmailFormHandler = () => setIsEditingEmail((prev) => !prev);
   const toggleEditPasswordFormHandler = () =>
     setIsEditingPassword((prev) => !prev);
+  const toggleDeleteAccountModal = () => setIsDeleting((prev) => !prev);
 
   const deleteAccountHandler = () => {
     deleteAccount();
+    toggleDeleteAccountModal();
     navigate(Paths.HOME_PATH);
   };
 
@@ -51,7 +55,12 @@ const AccountInfo: FC = () => {
           <ChangePasswordForm onClose={toggleEditPasswordFormHandler} />
         )}
       </div>
-      <Button onClick={deleteAccountHandler}>Delete account</Button>
+      <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
+      <Modal isActive={isDeleting} onClose={toggleDeleteAccountModal}>
+        <p>This operation cannot be undone</p>
+        <Button onClick={deleteAccountHandler}>Delete</Button>
+        <Button onClick={toggleDeleteAccountModal}>Cancel</Button>
+      </Modal>
     </div>
   );
 };
