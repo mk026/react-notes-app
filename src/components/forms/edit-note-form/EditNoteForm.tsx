@@ -7,7 +7,6 @@ import Textarea from "../../ui/textarea/Textarea";
 import { useActions } from "../../../hooks/useActions";
 import { INote } from "../../../models/INote";
 import {
-  noteFormInitialValues,
   NoteFormValues,
   noteValidationSchema,
 } from "../../../validation/noteValidation";
@@ -20,7 +19,7 @@ interface EditNoteFormProps {
 const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<NoteFormValues>({
-      initialValues: noteFormInitialValues,
+      initialValues: { title: note.title, content: note.content },
       validationSchema: noteValidationSchema,
       onSubmit: (values) => editNoteHandler(values),
     });
