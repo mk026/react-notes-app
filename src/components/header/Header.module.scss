@@ -1,7 +1,9 @@
 @import "../../styles/variables.scss";
 
 .header {
-  min-height: 62px;
+  position: sticky;
+  top: 0;
+  height: 62px;
   display: flex;
   justify-content: space-between;
 
