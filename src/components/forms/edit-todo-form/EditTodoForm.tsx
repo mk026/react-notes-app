@@ -26,6 +26,7 @@ const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
 
   const editTodoHandler = ({ title }: TodoFormValues) => {
     updateTodo({ ...todo, title });
+    onClose();
   };
 
   return (

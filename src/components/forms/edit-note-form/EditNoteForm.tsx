@@ -32,6 +32,7 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
 
   const editNoteHandler = ({ title, content }: NoteFormValues) => {
     updateNote({ _id: note._id, title, content });
+    onClose();
   };
 
   return (

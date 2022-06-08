@@ -26,6 +26,7 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
 
   const addNoteHandler = ({ title, content }: NoteFormValues) => {
     addNote(title, content);
+    onClose();
   };
 
   return (

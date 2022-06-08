@@ -25,6 +25,7 @@ const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
 
   const addTodoHandler = ({ title }: TodoFormValues) => {
     addTodo(title);
+    onClose();
   };
 
   return (
