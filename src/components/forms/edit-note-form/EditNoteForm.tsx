@@ -4,8 +4,8 @@ import { useFormik } from "formik";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import Textarea from "../../ui/textarea/Textarea";
-import { useActions } from "../../../hooks/useActions";
 import { INote } from "../../../models/INote";
+import { useActions } from "../../../hooks/useActions";
 import {
   NoteFormValues,
   noteValidationSchema,
@@ -17,13 +17,18 @@ interface EditNoteFormProps {
 }
 
 const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
+  const { updateNote } = useActions();
+
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik<NoteFormValues>({
-      initialValues: { title: note.title, content: note.content },
+      initialValues: {
+        title: note.title,
+        content: note.content,
+      },
       validationSchema: noteValidationSchema,
       onSubmit: (values) => editNoteHandler(values),
+      enableReinitialize: true,
     });
-  const { updateNote } = useActions();
 
   const editNoteHandler = ({ title, content }: NoteFormValues) => {
     updateNote({ _id: note._id, title, content });
@@ -54,7 +59,7 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
       />
       <Button type="submit">Save</Button>
       <Button type="button" onClick={onClose}>
-        Close
+        Cancel
       </Button>
     </form>
   );

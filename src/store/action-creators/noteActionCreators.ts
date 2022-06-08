@@ -43,3 +43,8 @@ export const deleteNote = (id: string) => async (dispatch: AppDispatch) => {
     dispatch(noteSlice.actions.setError((e as Error).message));
   }
 };
+
+export const showEditNoteForm = (note: INote) => (dispatch: AppDispatch) => {
+  dispatch(noteSlice.actions.setSelectedNote(note));
+  dispatch(noteSlice.actions.toggleIsEditing());
+};

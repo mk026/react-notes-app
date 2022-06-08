@@ -5,13 +5,17 @@ import { INote } from "../../models/INote";
 interface NotesState {
   notes: INote[];
   isLoading: boolean;
+  isEditing: boolean;
   error: string | null;
+  selectedNote: INote | null;
 }
 
 const initialState: NotesState = {
   notes: [],
   isLoading: false,
+  isEditing: false,
   error: null,
+  selectedNote: null,
 };
 
 export const noteSlice = createSlice({
@@ -29,9 +33,15 @@ export const noteSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    toggleIsEditing(state) {
+      state.isEditing = !state.isEditing;
+    },
+    setSelectedNote(state, action: PayloadAction<INote>) {
+      state.selectedNote = action.payload;
+    },
     addNoteSuccess(state, action: PayloadAction<INote>) {
-      state.isLoading = false;
       state.notes.push(action.payload);
+      state.isLoading = false;
     },
     updateNoteSuccess(state, action: PayloadAction<INote>) {
       const noteId = action.payload._id;

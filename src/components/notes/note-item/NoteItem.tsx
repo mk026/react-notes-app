@@ -1,9 +1,7 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import Card from "../../ui/card/Card";
 import Button from "../../ui/button/Button";
-import Drawer, { DrawerPosition } from "../../ui/drawer/Drawer";
-import EditNoteForm from "../../forms/edit-note-form/EditNoteForm";
 import { INote } from "../../../models/INote";
 import { useActions } from "../../../hooks/useActions";
 
@@ -14,27 +12,19 @@ interface NoteItemProps {
 }
 
 const NoteItem: FC<NoteItemProps> = ({ note }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const { deleteNote } = useActions();
+  const { showEditNoteForm, deleteNote } = useActions();
 
-  const toggleEditForm = () => setIsEditing((prev) => !prev);
+  const editNoteHandler = () => showEditNoteForm(note);
   const deleteNoteHandler = () => deleteNote(note._id);
 
   return (
     <>
-      <Drawer
-        isActive={isEditing}
-        onClose={toggleEditForm}
-        position={DrawerPosition.RIGHT}
-      >
-        <EditNoteForm note={note} onClose={toggleEditForm} />
-      </Drawer>
       <Card className={classes.note}>
         <p className={classes["note__title"]}>{note.title}</p>
         <hr className={classes["note__hr"]} />
         <p>{note.content}</p>
         <div className={classes["note__controls"]}>
-          <Button onClick={toggleEditForm}>Edit</Button>
+          <Button onClick={editNoteHandler}>Edit</Button>
           <Button onClick={deleteNoteHandler}>Delete</Button>
         </div>
       </Card>
