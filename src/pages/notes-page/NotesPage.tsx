@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import AddNoteForm from "../../components/forms/add-note-form/AddNoteForm";
 import EditNoteForm from "../../components/forms/edit-note-form/EditNoteForm";
@@ -12,16 +12,21 @@ import { useActions } from "../../hooks/useActions";
 import { getNoteState } from "../../store/selectors";
 
 const NotesPage: FC = () => {
-  const { isEditing, selectedNote } = useAppSelector(getNoteState);
-  const { toggleIsEditing } = useActions();
-  const [isAdding, setIsAdding] = useState(false);
+  const { isAdding, isEditing, selectedNote } = useAppSelector(getNoteState);
+  const { toggleIsAdding, toggleIsEditing } = useActions();
 
-  const toggleAddNoteFormHandler = () => setIsAdding((prev) => !prev);
+  const toggleAddNoteFormHandler = () => toggleIsAdding();
   const toggleEditNoteFormHadler = () => toggleIsEditing();
 
   return (
     <>
-      {isAdding && <AddNoteForm onClose={toggleAddNoteFormHandler} />}
+      <Drawer
+        isActive={isAdding}
+        onClose={toggleAddNoteFormHandler}
+        position={DrawerPosition.RIGHT}
+      >
+        <AddNoteForm onClose={toggleAddNoteFormHandler} />
+      </Drawer>
       <Drawer
         isActive={isEditing}
         onClose={toggleEditNoteFormHadler}

@@ -5,6 +5,7 @@ import { INote } from "../../models/INote";
 interface NotesState {
   notes: INote[];
   isLoading: boolean;
+  isAdding: boolean;
   isEditing: boolean;
   error: string | null;
   selectedNote: INote | null;
@@ -13,6 +14,7 @@ interface NotesState {
 const initialState: NotesState = {
   notes: [],
   isLoading: false,
+  isAdding: false,
   isEditing: false,
   error: null,
   selectedNote: null,
@@ -32,6 +34,9 @@ export const noteSlice = createSlice({
     setError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    toggleIsAdding(state) {
+      state.isAdding = !state.isAdding;
     },
     toggleIsEditing(state) {
       state.isEditing = !state.isEditing;
