@@ -44,7 +44,7 @@ export const deleteAccount = () => async (dispatch: AppDispatch) => {
     await UserService.deleteAccount();
     dispatch(userSlice.actions.removeUserSuccess());
     AuthService.removeStoredToken();
-    dispatch(authSlice.actions.signout());
+    dispatch(authSlice.actions.setUnauth());
   } catch (e) {
     dispatch(userSlice.actions.setError((e as Error).message));
   }

@@ -50,5 +50,5 @@ export const checkAuth = () => async (dispatch: AppDispatch) => {
 export const signout = () => (dispatch: AppDispatch) => {
   AuthService.removeStoredToken();
   dispatch(userSlice.actions.removeUser());
-  dispatch(authSlice.actions.signout());
+  dispatch(authSlice.actions.setUnauth());
 };

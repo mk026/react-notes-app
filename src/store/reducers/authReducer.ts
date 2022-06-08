@@ -40,7 +40,7 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    signout(state) {
+    setUnauth(state) {
       state.isAuth = false;
     },
     disableLoading(state) {
