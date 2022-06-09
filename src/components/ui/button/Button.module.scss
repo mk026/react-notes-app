@@ -11,4 +11,9 @@
   &:hover {
     background-color: darken($neutral, 10);
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: darken($neutral, 5);
+  }
 }
