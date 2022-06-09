@@ -2,4 +2,12 @@
   padding: 10px;
   display: flex;
   flex-flow: column nowrap;
+
+  > * {
+    margin-bottom: 10px;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
 }
