@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
+import Form from "../../ui/form/Form";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
@@ -47,7 +48,7 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} onReset={handleReset}>
+    <Form onSubmit={handleSubmit} onReset={handleReset}>
       {touched.email && errors.email && <div>{errors.email}</div>}
       <label htmlFor="email">Enter your email</label>
       <Input
@@ -73,7 +74,7 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
       <p>
         Don't have an account? <button onClick={switchToSignup}>Signup</button>
       </p>
-    </form>
+    </Form>
   );
 };
 

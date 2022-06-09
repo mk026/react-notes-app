@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 
+import Form from "../../ui/form/Form";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import Textarea from "../../ui/textarea/Textarea";
@@ -30,7 +31,7 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">Note title</label>
       <Input
@@ -56,7 +57,7 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>
-    </form>
+    </Form>
   );
 };
 
