@@ -15,12 +15,19 @@ interface ChangeEmailFormProps {
 }
 
 const ChangeEmailForm: FC<ChangeEmailFormProps> = ({ onClose }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<ChangeEmailFormValues>({
-      initialValues: changeEmailFormInitialValues,
-      validationSchema: changeEmailValidationSchema,
-      onSubmit: (values) => changeEmailHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<ChangeEmailFormValues>({
+    initialValues: changeEmailFormInitialValues,
+    validationSchema: changeEmailValidationSchema,
+    onSubmit: (values) => changeEmailHandler(values),
+  });
   const { updateEmail } = useActions();
 
   const changeEmailHandler = ({ email }: ChangeEmailFormValues) => {
@@ -29,7 +36,6 @@ const ChangeEmailForm: FC<ChangeEmailFormProps> = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {touched.email && errors.email && <div>{errors.email}</div>}
       <Input
         id="email"
         name="email"
@@ -38,8 +44,12 @@ const ChangeEmailForm: FC<ChangeEmailFormProps> = ({ onClose }) => {
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.email}
+        error={errors.email}
       />
-      <Button type="submit">Save</Button>
+      <Button type="submit" disabled={!isValid}>
+        Save
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>

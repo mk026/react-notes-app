@@ -15,12 +15,19 @@ interface AddTodoFormProps {
 }
 
 const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<TodoFormValues>({
-      initialValues: todoFormInitialValues,
-      validationSchema: todoValidationSchema,
-      onSubmit: (values) => addTodoHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<TodoFormValues>({
+    initialValues: todoFormInitialValues,
+    validationSchema: todoValidationSchema,
+    onSubmit: (values) => addTodoHandler(values),
+  });
   const { addTodo } = useActions();
 
   const addTodoHandler = ({ title }: TodoFormValues) => {
@@ -30,7 +37,6 @@ const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">Todo title</label>
       <Input
         id="title"
@@ -39,8 +45,12 @@ const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
         value={values.title}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.title}
+        error={errors.title}
       />
-      <Button type="submit">Add todo</Button>
+      <Button type="submit" disabled={!isValid}>
+        Add todo
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>

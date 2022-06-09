@@ -17,12 +17,19 @@ interface AddNoteFormProps {
 }
 
 const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<NoteFormValues>({
-      initialValues: noteFormInitialValues,
-      validationSchema: noteValidationSchema,
-      onSubmit: (values) => addNoteHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<NoteFormValues>({
+    initialValues: noteFormInitialValues,
+    validationSchema: noteValidationSchema,
+    onSubmit: (values) => addNoteHandler(values),
+  });
   const { addNote } = useActions();
 
   const addNoteHandler = ({ title, content }: NoteFormValues) => {
@@ -32,7 +39,6 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">Note title</label>
       <Input
         id="title"
@@ -41,8 +47,9 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
         value={values.title}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.title}
+        error={errors.title}
       />
-      {touched.content && errors.content && <div>{errors.content}</div>}
       <label htmlFor="content">Note content</label>
       <Textarea
         id="content"
@@ -53,7 +60,9 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
         cols={40}
         rows={6}
       />
-      <Button type="submit">Add note</Button>
+      <Button type="submit" disabled={!isValid}>
+        Add note
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>

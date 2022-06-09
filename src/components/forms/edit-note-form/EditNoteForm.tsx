@@ -20,16 +20,23 @@ interface EditNoteFormProps {
 const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
   const { updateNote } = useActions();
 
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<NoteFormValues>({
-      initialValues: {
-        title: note.title,
-        content: note.content,
-      },
-      validationSchema: noteValidationSchema,
-      onSubmit: (values) => editNoteHandler(values),
-      enableReinitialize: true,
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<NoteFormValues>({
+    initialValues: {
+      title: note.title,
+      content: note.content,
+    },
+    validationSchema: noteValidationSchema,
+    onSubmit: (values) => editNoteHandler(values),
+    enableReinitialize: true,
+  });
 
   const editNoteHandler = ({ title, content }: NoteFormValues) => {
     updateNote({ _id: note._id, title, content });
@@ -38,7 +45,6 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      {touched.title && errors.title && <div>{errors.title}</div>}
       <label htmlFor="title">New note title</label>
       <Input
         id="title"
@@ -47,8 +53,9 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
         value={values.title}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.title}
+        error={errors.title}
       />
-      {touched.content && errors.content && <div>{errors.content}</div>}
       <label htmlFor="content">New note content</label>
       <Textarea
         id="content"
@@ -59,7 +66,9 @@ const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
         cols={40}
         rows={6}
       />
-      <Button type="submit">Save</Button>
+      <Button type="submit" disabled={!isValid}>
+        Save
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>

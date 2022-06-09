@@ -15,12 +15,19 @@ interface ChangePasswordFormProps {
 }
 
 const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<ChangePasswordFormValues>({
-      initialValues: changePasswordFormInitialValues,
-      validationSchema: changePasswordValidationSchema,
-      onSubmit: (values) => changePasswordHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<ChangePasswordFormValues>({
+    initialValues: changePasswordFormInitialValues,
+    validationSchema: changePasswordValidationSchema,
+    onSubmit: (values) => changePasswordHandler(values),
+  });
   const { updatePassword } = useActions();
 
   const changePasswordHandler = ({
@@ -32,9 +39,6 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {touched.oldPassword && errors.oldPassword && (
-        <div>{errors.oldPassword}</div>
-      )}
       <label htmlFor="oldPassword">Enter your current password</label>
       <Input
         id="oldPassword"
@@ -43,10 +47,9 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
         value={values.oldPassword}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.oldPassword}
+        error={errors.oldPassword}
       />
-      {touched.newPassword && errors.newPassword && (
-        <div>{errors.newPassword}</div>
-      )}
       <label htmlFor="newPassword">Enter new password</label>
       <Input
         id="newPassword"
@@ -55,10 +58,9 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
         value={values.newPassword}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.newPassword}
+        error={errors.newPassword}
       />
-      {touched.confirmPassword && errors.confirmPassword && (
-        <div>{errors.confirmPassword}</div>
-      )}
       <label htmlFor="confirmPassword">Confirm new password</label>
       <Input
         id="confirmPassword"
@@ -67,8 +69,12 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
         value={values.confirmPassword}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.confirmPassword}
+        error={errors.confirmPassword}
       />
-      <Button type="submit">Save</Button>
+      <Button type="submit" disabled={!isValid}>
+        Save
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>

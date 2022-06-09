@@ -15,12 +15,19 @@ interface ChangeNameFormProps {
 }
 
 const ChangeNameForm: FC<ChangeNameFormProps> = ({ onClose }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<ChangeNameFormValues>({
-      initialValues: changeNameFormInitialValues,
-      validationSchema: changeNameValidationSchema,
-      onSubmit: (values) => changeNameHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<ChangeNameFormValues>({
+    initialValues: changeNameFormInitialValues,
+    validationSchema: changeNameValidationSchema,
+    onSubmit: (values) => changeNameHandler(values),
+  });
   const { updateName } = useActions();
 
   const changeNameHandler = ({ name }: ChangeNameFormValues) => {
@@ -29,7 +36,6 @@ const ChangeNameForm: FC<ChangeNameFormProps> = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {touched.name && errors.name && <div>{errors.name}</div>}
       <Input
         id="name"
         name="name"
@@ -38,8 +44,12 @@ const ChangeNameForm: FC<ChangeNameFormProps> = ({ onClose }) => {
         value={values.name}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.name}
+        error={errors.name}
       />
-      <Button type="submit">Save</Button>
+      <Button type="submit" disabled={!isValid}>
+        Save
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>

@@ -16,12 +16,19 @@ interface EditTodoFormProps {
 }
 
 const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik<TodoFormValues>({
-      initialValues: { title: todo.title },
-      validationSchema: todoValidationSchema,
-      onSubmit: (values) => editTodoHandler(values),
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isValid,
+  } = useFormik<TodoFormValues>({
+    initialValues: { title: todo.title },
+    validationSchema: todoValidationSchema,
+    onSubmit: (values) => editTodoHandler(values),
+  });
   const { updateTodo } = useActions();
 
   const editTodoHandler = ({ title }: TodoFormValues) => {
@@ -40,8 +47,12 @@ const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
         value={values.title}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.title}
+        error={errors.title}
       />
-      <Button type="submit">Save</Button>
+      <Button type="submit" disabled={!isValid}>
+        Save
+      </Button>
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>
