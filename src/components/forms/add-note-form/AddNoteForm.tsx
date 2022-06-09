@@ -57,6 +57,8 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
         value={values.content}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.content}
+        error={errors.content}
         cols={40}
         rows={6}
       />
