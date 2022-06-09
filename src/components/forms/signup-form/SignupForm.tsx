@@ -28,6 +28,7 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
     handleChange,
     handleSubmit,
     handleReset,
+    isValid,
   } = useFormik<SignupFormValues>({
     initialValues: signupFormInitialValues,
     validationSchema: signupValidationSchema,
@@ -93,7 +94,9 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
         touched={touched.confirmPassword}
         error={errors.confirmPassword}
       />
-      <Button type="submit">Signup</Button>
+      <Button type="submit" disabled={!isValid}>
+        Signup
+      </Button>
       <Button type="reset">Clear</Button>
       <p>
         Already have an account?{" "}
