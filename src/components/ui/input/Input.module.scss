@@ -1,3 +1,11 @@
+@import "../../../styles/variables.scss";
+
 .input {
   padding: 10px;
+}
+
+.error {
+  color: $error;
+
+  margin: 0;
 }

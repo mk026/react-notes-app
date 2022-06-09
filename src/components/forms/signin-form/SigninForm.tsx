@@ -49,7 +49,6 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
 
   return (
     <Form onSubmit={handleSubmit} onReset={handleReset}>
-      {touched.email && errors.email && <div>{errors.email}</div>}
       <label htmlFor="email">Enter your email</label>
       <Input
         id="email"
@@ -58,8 +57,9 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.email}
+        error={errors.email}
       />
-      {touched.password && errors.password && <div>{errors.password}</div>}
       <label htmlFor="password">Enter your password</label>
       <Input
         id="password"
@@ -68,6 +68,8 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.password}
+        error={errors.password}
       />
       <Button type="submit">Signin</Button>
       <Button type="reset">Clear</Button>

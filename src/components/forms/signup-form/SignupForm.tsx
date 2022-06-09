@@ -49,7 +49,6 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
 
   return (
     <Form onSubmit={handleSubmit} onReset={handleReset}>
-      {touched.name && errors.name && <div>{errors.name}</div>}
       <label htmlFor="name">Enter your name</label>
       <Input
         id="name"
@@ -58,8 +57,9 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
         value={values.name}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.name}
+        error={errors.name}
       />
-      {touched.email && errors.email && <div>{errors.email}</div>}
       <label htmlFor="email">Enter your email</label>
       <Input
         id="email"
@@ -68,8 +68,9 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.email}
+        error={errors.email}
       />
-      {touched.password && errors.password && <div>{errors.password}</div>}
       <label htmlFor="password">Enter your password</label>
       <Input
         id="password"
@@ -78,10 +79,9 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.password}
+        error={errors.password}
       />
-      {touched.confirmPassword && errors.confirmPassword && (
-        <div>{errors.confirmPassword}</div>
-      )}
       <label htmlFor="confirmPassword">Confirm your password</label>
       <Input
         id="confirmPassword"
@@ -90,6 +90,8 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
         value={values.confirmPassword}
         onChange={handleChange}
         onBlur={handleBlur}
+        touched={touched.confirmPassword}
+        error={errors.confirmPassword}
       />
       <Button type="submit">Signup</Button>
       <Button type="reset">Clear</Button>
