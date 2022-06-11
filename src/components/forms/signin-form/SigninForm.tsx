@@ -11,15 +11,16 @@ import {
   SigninFormValues,
   signinValidationSchema,
 } from "../../../validation/signinValidation";
-import { Paths } from "../../../routes/types";
 import { useAppSelector } from "../../../hooks/redux";
 import { getAuthState } from "../../../store/selectors";
+import { Paths } from "../../../routes/types";
 
 interface SigninFormProps {
   switchToSignup: () => void;
+  redirectPath?: Paths;
 }
 
-const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
+const SigninForm: FC<SigninFormProps> = ({ switchToSignup, redirectPath }) => {
   const {
     values,
     touched,
@@ -40,9 +41,9 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup }) => {
 
   useEffect(() => {
     if (isAuth) {
-      navigate(Paths.HOME_PATH, { replace: true });
+      navigate(redirectPath || Paths.HOME_PATH, { replace: true });
     }
-  }, [isAuth, navigate]);
+  }, [isAuth, navigate, redirectPath]);
 
   const signinHandler = ({ email, password }: SigninFormValues) => {
     signin(email, password);

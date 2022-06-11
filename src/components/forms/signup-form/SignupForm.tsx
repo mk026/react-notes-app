@@ -17,9 +17,10 @@ import { getAuthState } from "../../../store/selectors";
 
 interface SignupFormProps {
   switchToSignin: () => void;
+  redirectPath?: Paths;
 }
 
-const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
+const SignupForm: FC<SignupFormProps> = ({ switchToSignin, redirectPath }) => {
   const {
     values,
     touched,
@@ -40,9 +41,9 @@ const SignupForm: FC<SignupFormProps> = ({ switchToSignin }) => {
 
   useEffect(() => {
     if (isAuth) {
-      navigate(Paths.HOME_PATH, { replace: true });
+      navigate(redirectPath || Paths.HOME_PATH, { replace: true });
     }
-  }, [isAuth, navigate]);
+  }, [isAuth, navigate, redirectPath]);
 
   const signupHandler = ({ name, email, password }: SignupFormValues) => {
     signup(name, email, password);
