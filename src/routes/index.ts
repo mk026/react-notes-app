@@ -6,11 +6,9 @@ import NotesPage from "../pages/notes-page/NotesPage";
 import TodosPage from "../pages/todos-page/TodosPage";
 
 export const authRoutes: IRoute[] = [
-  { path: Paths.HOME_PATH, Component: HomePage, name: "Home" },
   { path: Paths.NOTES_PATH, Component: NotesPage, name: "Notes" },
   { path: Paths.TODOS_PATH, Component: TodosPage, name: "Todos" },
   { path: Paths.ACCOUNT_PATH, Component: AccountPage, name: "Account" },
-  { path: Paths.AUTH_PATH, Component: AuthPage, name: "Auth" },
 ];
 
 export const publicRoutes: IRoute[] = [
