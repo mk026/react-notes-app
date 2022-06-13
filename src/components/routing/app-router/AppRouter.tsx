@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { authRoutes, publicRoutes } from "../../routes";
-import NotFoundPage from "../../pages/not-found-page/NotFoundPage";
+import { authRoutes, publicRoutes } from "../../../routes";
+import NotFoundPage from "../../../pages/not-found-page/NotFoundPage";
 import AuthWrapper from "../auth-wrapper/AuthWrapper";
 
 const AppRouter: FC = () => {

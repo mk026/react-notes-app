@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import Header from "./components/header/Header";
-import AppRouter from "./components/app-router/AppRouter";
+import AppRouter from "./components/routing/app-router/AppRouter";
 import { useActions } from "./hooks/useActions";
 import { useAppSelector } from "./hooks/redux";
 import { getAuthState } from "./store/selectors";

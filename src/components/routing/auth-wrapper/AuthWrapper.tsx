@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-import { useAppSelector } from "../../hooks/redux";
-import { Paths } from "../../routes/types";
-import { getAuthState } from "../../store/selectors";
+import { useAppSelector } from "../../../hooks/redux";
+import { Paths } from "../../../routes/types";
+import { getAuthState } from "../../../store/selectors";
 
 const AuthWrapper: FC = () => {
   const { isAuth } = useAppSelector(getAuthState);
