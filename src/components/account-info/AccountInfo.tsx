@@ -36,34 +36,41 @@ const AccountInfo: FC = () => {
   };
 
   return (
-    <div className={classes["account-info"]}>
-      <section className={classes["info"]}>
-        <p>{user?.name}</p>
-        <Button onClick={toggleEditNameFormHandler}>Edit</Button>
-        {isEditingName && (
-          <ChangeNameForm onClose={toggleEditNameFormHandler} />
-        )}
-      </section>
-      <section className={classes["info"]}>
-        <p>{user?.email}</p>
-        <Button onClick={toggleEditEmailFormHandler}>Edit</Button>
-        {isEditingEmail && (
-          <ChangeEmailForm onClose={toggleEditEmailFormHandler} />
-        )}
-      </section>
-      <section className={classes["info"]}>
-        <Button onClick={toggleEditPasswordFormHandler}>Update password</Button>
-        {isEditingPassword && (
-          <ChangePasswordForm onClose={toggleEditPasswordFormHandler} />
-        )}
-      </section>
-      <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
+    <>
+      <div className={classes["account-info"]}>
+        <section className={classes["info"]}>
+          <p>{user?.name}</p>
+          <Button onClick={toggleEditNameFormHandler}>Edit</Button>
+          {isEditingName && (
+            <ChangeNameForm onClose={toggleEditNameFormHandler} />
+          )}
+        </section>
+        <section className={classes["info"]}>
+          <p>{user?.email}</p>
+          <Button onClick={toggleEditEmailFormHandler}>Edit</Button>
+          {isEditingEmail && (
+            <ChangeEmailForm onClose={toggleEditEmailFormHandler} />
+          )}
+        </section>
+        <section className={classes["info"]}>
+          <Button onClick={toggleEditPasswordFormHandler}>
+            Update password
+          </Button>
+        </section>
+        <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
+      </div>
+      <Modal
+        isActive={isEditingPassword}
+        onClose={toggleEditPasswordFormHandler}
+      >
+        <ChangePasswordForm onClose={toggleEditPasswordFormHandler} />
+      </Modal>
       <Modal isActive={isDeleting} onClose={toggleDeleteAccountModal}>
         <p>This operation cannot be undone</p>
         <Button onClick={deleteAccountHandler}>Delete</Button>
         <Button onClick={toggleDeleteAccountModal}>Cancel</Button>
       </Modal>
-    </div>
+    </>
   );
 };
 
