@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 
+import Form from "../../ui/form/Form";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import {
@@ -38,7 +39,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <label htmlFor="oldPassword">Enter your current password</label>
       <Input
         id="oldPassword"
@@ -78,7 +79,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
       <Button type="button" onClick={onClose}>
         Cancel
       </Button>
-    </form>
+    </Form>
   );
 };
 
