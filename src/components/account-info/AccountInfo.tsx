@@ -11,6 +11,8 @@ import ChangePasswordForm from "../forms/change-password-form/ChangePasswordForm
 import Button from "../ui/button/Button";
 import Modal from "../ui/modal/Modal";
 
+import classes from "./AccountInfo.module.scss";
+
 const AccountInfo: FC = () => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
@@ -34,27 +36,27 @@ const AccountInfo: FC = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className={classes["account-info"]}>
+      <section className={classes["info"]}>
         <p>{user?.name}</p>
         <Button onClick={toggleEditNameFormHandler}>Edit</Button>
         {isEditingName && (
           <ChangeNameForm onClose={toggleEditNameFormHandler} />
         )}
-      </div>
-      <div>
+      </section>
+      <section className={classes["info"]}>
         <p>{user?.email}</p>
         <Button onClick={toggleEditEmailFormHandler}>Edit</Button>
         {isEditingEmail && (
           <ChangeEmailForm onClose={toggleEditEmailFormHandler} />
         )}
-      </div>
-      <div>
+      </section>
+      <section className={classes["info"]}>
         <Button onClick={toggleEditPasswordFormHandler}>Update password</Button>
         {isEditingPassword && (
           <ChangePasswordForm onClose={toggleEditPasswordFormHandler} />
         )}
-      </div>
+      </section>
       <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
       <Modal isActive={isDeleting} onClose={toggleDeleteAccountModal}>
         <p>This operation cannot be undone</p>
