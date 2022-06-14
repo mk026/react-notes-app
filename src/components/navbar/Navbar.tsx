@@ -1,15 +1,15 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
-import { IRoute } from "../../routes/types";
+import { ILink } from "../../hooks/useLinks";
 
 import classes from "./Navbar.module.scss";
 
 interface NavbarProps {
-  routes: IRoute[];
+  links: ILink[];
 }
 
-const Navbar: FC<NavbarProps> = ({ routes }) => {
+const Navbar: FC<NavbarProps> = ({ links }) => {
   const getLinkStyles = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? classes.navbar__link + " " + classes.active
@@ -18,7 +18,7 @@ const Navbar: FC<NavbarProps> = ({ routes }) => {
   return (
     <nav className={classes.navbar}>
       <ul>
-        {routes.map(({ path, name }) => (
+        {links.map(({ path, name }) => (
           <li key={path}>
             <NavLink className={getLinkStyles} to={path}>
               {name}
