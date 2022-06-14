@@ -1,15 +1,13 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ILink } from "../../routes/links";
+import { useLinks } from "../../hooks/useLinks";
 
 import classes from "./Navbar.module.scss";
 
-interface NavbarProps {
-  links: ILink[];
-}
+const Navbar: FC = () => {
+  const links = useLinks();
 
-const Navbar: FC<NavbarProps> = ({ links }) => {
   const getLinkStyles = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? classes.navbar__link + " " + classes.active

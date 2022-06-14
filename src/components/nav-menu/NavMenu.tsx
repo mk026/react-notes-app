@@ -1,18 +1,19 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ILink } from "../../routes/links";
+import { useLinks } from "../../hooks/useLinks";
 import Drawer, { DrawerPosition } from "../ui/drawer/Drawer";
 
 import classes from "./NavMenu.module.scss";
 
 interface NavMenuProps {
-  links: ILink[];
   isActive: boolean;
   onClose: () => void;
 }
 
-const NavMenu: FC<NavMenuProps> = ({ links, isActive, onClose }) => {
+const NavMenu: FC<NavMenuProps> = ({ isActive, onClose }) => {
+  const links = useLinks();
+
   const getLinkStyles = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? classes["nav-menu__link"] + " " + classes.active
