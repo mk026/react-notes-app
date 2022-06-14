@@ -1,27 +1,23 @@
-import { FC, MouseEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC, useState } from "react";
 
 import { useAppSelector } from "../../hooks/redux";
-import { useActions } from "../../hooks/useActions";
-import { Paths } from "../../routes";
 import { getUserState } from "../../store/selectors";
+import UserMenu from "../user-menu/UserMenu";
 
 import classes from "./UserStatus.module.scss";
 
 const UserStatus: FC = () => {
   const { user } = useAppSelector(getUserState);
-  const { signout } = useActions();
-  const navigate = useNavigate();
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-  const signoutHandler = (e: MouseEvent<HTMLButtonElement>) => {
-    signout();
-    navigate(Paths.HOME_PATH);
-  };
+  const toggleUserMenuHandler = () => setIsMenuVisible((prev) => !prev);
 
   return (
     <div className={classes["user-status"]}>
-      <p className={classes["user-status__name"]}>{user?.name}</p>
-      <button onClick={signoutHandler}>Signout</button>
+      <button className={classes["btn"]} onClick={toggleUserMenuHandler}>
+        {user?.name}
+      </button>
+      {isMenuVisible && <UserMenu />}
     </div>
   );
 };

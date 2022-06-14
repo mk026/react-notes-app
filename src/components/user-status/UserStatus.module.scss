@@ -2,9 +2,15 @@
   display: flex;
   align-items: center;
   margin: 0 10px;
-}
 
-.user-status__name {
-  color: #ffffff;
-  margin-right: 10px;
+  .btn {
+    color: #ffffff;
+    font-size: 17px;
+
+    margin-right: 10px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 }
