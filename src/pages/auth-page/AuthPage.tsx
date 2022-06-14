@@ -5,7 +5,7 @@ import SignupForm from "../../components/forms/signup-form/SignupForm";
 import Page from "../../components/ui/page/Page";
 import FormContainer from "../../components/ui/form-container/FormContainer";
 import { useLocation } from "react-router-dom";
-import { Paths } from "../../routes/types";
+import { Paths } from "../../routes";
 
 const AuthPage: FC = () => {
   const [isSignin, setIsSignin] = useState(true);

@@ -11,7 +11,7 @@ import {
   SignupFormValues,
   signupValidationSchema,
 } from "../../../validation/signupValidation";
-import { Paths } from "../../../routes/types";
+import { Paths } from "../../../routes";
 import { useAppSelector } from "../../../hooks/redux";
 import { getAuthState } from "../../../store/selectors";
 

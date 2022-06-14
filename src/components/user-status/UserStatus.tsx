@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux";
 import { useActions } from "../../hooks/useActions";
-import { Paths } from "../../routes/types";
+import { Paths } from "../../routes";
 import { getUserState } from "../../store/selectors";
 
 import classes from "./UserStatus.module.scss";

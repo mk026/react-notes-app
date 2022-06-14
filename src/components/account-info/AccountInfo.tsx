@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux";
 import { useActions } from "../../hooks/useActions";
-import { Paths } from "../../routes/types";
+import { Paths } from "../../routes";
 import { getUserState } from "../../store/selectors";
 import ChangeEmailForm from "../forms/change-email-form/ChangeEmailForm";
 import ChangeNameForm from "../forms/change-name-form/ChangeNameForm";

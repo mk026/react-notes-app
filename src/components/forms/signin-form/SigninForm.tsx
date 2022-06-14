@@ -13,7 +13,7 @@ import {
 } from "../../../validation/signinValidation";
 import { useAppSelector } from "../../../hooks/redux";
 import { getAuthState } from "../../../store/selectors";
-import { Paths } from "../../../routes/types";
+import { Paths } from "../../../routes";
 
 interface SigninFormProps {
   switchToSignup: () => void;

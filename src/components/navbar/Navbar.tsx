@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ILink } from "../../hooks/useLinks";
+import { ILink } from "../../routes/links";
 
 import classes from "./Navbar.module.scss";
 
