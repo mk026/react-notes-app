@@ -1,6 +1,9 @@
+@import "../../../styles/variables.scss";
+
 .note {
   flex: 1 1 324px;
   margin: 10px;
+  align-self: flex-start;
 
   @media screen and (max-width: 768px) {
     flex-grow: 1;
@@ -19,9 +22,43 @@
   margin: 0;
 }
 
+.note__content {
+  text-align: justify;
+
+  position: relative;
+  max-height: 400px;
+
+  overflow: hidden;
+  transition: all 0.2s linear;
+
+  &.note__content--preview {
+    max-height: 50px;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      background: linear-gradient(to bottom, transparent, $lightgray);
+    }
+  }
+}
+
 .note__controls {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  width: 110px;
+  width: fit-content;
+
+  button {
+    margin-right: 10px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 }
