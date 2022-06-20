@@ -1,9 +1,13 @@
+@import "../../../styles/variables.scss";
+
 .todo {
   display: flex;
   flex-flow: row nowrap;
   max-width: 600px;
   margin: 20px auto;
   justify-content: space-between;
+
+  box-shadow: 0 8px 8px $lightShadow;
 }
 
 .todo__title {
