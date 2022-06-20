@@ -17,4 +17,8 @@
 
     pointer-events: all;
   }
+
+  &.invisible {
+    background-color: transparent;
+  }
 }

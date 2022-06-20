@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 
 import { useAppSelector } from "../../hooks/redux";
 import { getUserState } from "../../store/selectors";
+import Backdrop from "../ui/backdrop/Backdrop";
 import UserMenu from "../user-menu/UserMenu";
 
 import classes from "./UserStatus.module.scss";
@@ -17,7 +18,16 @@ const UserStatus: FC = () => {
       <button className={classes["btn"]} onClick={toggleUserMenuHandler}>
         {user?.name}
       </button>
-      {isMenuVisible && <UserMenu />}
+      {isMenuVisible && (
+        <>
+          <Backdrop
+            isActive={isMenuVisible}
+            onClick={toggleUserMenuHandler}
+            invisible
+          />
+          <UserMenu />
+        </>
+      )}
     </div>
   );
 };

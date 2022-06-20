@@ -7,11 +7,13 @@
   padding: 10px;
   display: flex;
   flex-flow: column nowrap;
+  z-index: 100;
 
   background-color: $darkBlue;
   border-radius: 5px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  box-shadow: 0 8px 8px $lightShadow;
 
   .btn {
     color: #ffffff;
