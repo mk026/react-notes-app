@@ -5,9 +5,13 @@
   top: 62px;
   right: 19px;
   padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
 
   background-color: $darkBlue;
   border-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 
   .btn {
     color: #ffffff;
