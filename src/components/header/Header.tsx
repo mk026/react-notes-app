@@ -1,7 +1,5 @@
 import { FC, useState } from "react";
 
-import { useAppSelector } from "../../hooks/redux";
-import { getAuthState } from "../../store/selectors";
 import MenuButton from "../menu-button/MenuButton";
 import NavMenu from "../nav-menu/NavMenu";
 import Navbar from "../navbar/Navbar";
@@ -11,7 +9,6 @@ import classes from "./Header.module.scss";
 
 const Header: FC = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
-  const { isAuth } = useAppSelector(getAuthState);
 
   const toggleMenu = () => setMenuIsActive((prev) => !prev);
 
@@ -20,7 +17,7 @@ const Header: FC = () => {
       <MenuButton onClick={toggleMenu} />
       <NavMenu isActive={menuIsActive} onClose={toggleMenu} />
       <Navbar />
-      {isAuth && <UserStatus />}
+      <UserStatus />
     </header>
   );
 };
