@@ -16,10 +16,21 @@
   box-shadow: 0 8px 8px $lightShadow;
 
   .btn {
+    font-size: 14px;
     color: #ffffff;
+    text-decoration: none;
+
+    margin: 5px;
+    padding: 5px;
 
     background: none;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover {
+      background-color: $mediumBlue;
+    }
   }
 }
