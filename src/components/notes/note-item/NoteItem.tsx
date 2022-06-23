@@ -28,22 +28,20 @@ const NoteItem: FC<NoteItemProps> = ({ note }) => {
   const toggleFullNoteHandler = () => setIsExpanded((prev) => !prev);
 
   return (
-    <>
-      <Card className={classes["note"]}>
-        <p className={classes["note__title"]}>{note.title}</p>
-        <hr className={classes["note__hr"]} />
-        <p className={contentStyles.join(" ")}>{note.content}</p>
-        <div className={classes["note__controls"]}>
-          <Button onClick={editNoteHandler}>Edit</Button>
-          <Button onClick={deleteNoteHandler}>Delete</Button>
-          {isExpandable && (
-            <Button onClick={toggleFullNoteHandler}>
-              {isExpanded ? "Hide" : "Expand"}
-            </Button>
-          )}
-        </div>
-      </Card>
-    </>
+    <Card className={classes["note"]}>
+      <p className={classes["note__title"]}>{note.title}</p>
+      <hr className={classes["note__hr"]} />
+      <p className={contentStyles.join(" ")}>{note.content}</p>
+      <div className={classes["note__controls"]}>
+        <Button onClick={editNoteHandler}>Edit</Button>
+        <Button onClick={deleteNoteHandler}>Delete</Button>
+        {isExpandable && (
+          <Button onClick={toggleFullNoteHandler}>
+            {isExpanded ? "Hide" : "Expand"}
+          </Button>
+        )}
+      </div>
+    </Card>
   );
 };
 

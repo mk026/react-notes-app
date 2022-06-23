@@ -22,21 +22,19 @@ const TodoItem: FC<TodoItemProps> = ({ todo }) => {
     updateTodo({ ...todo, completed: !todo.completed });
 
   return (
-    <>
-      <Card className={classes.todo}>
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={changeTodoStatus}
-        />
-        {isEditing && <EditTodoForm todo={todo} onClose={toggleEditForm} />}
-        {!isEditing && <p className={classes["todo__title"]}>{todo.title}</p>}
-        <div className={classes["todo__controls"]}>
-          <Button onClick={toggleEditForm}>Edit</Button>
-          <Button onClick={deleteTodoHandler}>Delete</Button>
-        </div>
-      </Card>
-    </>
+    <Card className={classes.todo}>
+      <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={changeTodoStatus}
+      />
+      {isEditing && <EditTodoForm todo={todo} onClose={toggleEditForm} />}
+      {!isEditing && <p className={classes["todo__title"]}>{todo.title}</p>}
+      <div className={classes["todo__controls"]}>
+        <Button onClick={toggleEditForm}>Edit</Button>
+        <Button onClick={deleteTodoHandler}>Delete</Button>
+      </div>
+    </Card>
   );
 };
 
