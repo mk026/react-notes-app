@@ -38,25 +38,25 @@ const AccountInfo: FC = () => {
   return (
     <>
       <div className={classes["account-info"]}>
-        <section className={classes["info"]}>
+        <div className={classes["info"]}>
           <p>{user?.name}</p>
           <Button onClick={toggleEditNameFormHandler}>Edit</Button>
           {isEditingName && (
             <ChangeNameForm onClose={toggleEditNameFormHandler} />
           )}
-        </section>
-        <section className={classes["info"]}>
+        </div>
+        <div className={classes["info"]}>
           <p>{user?.email}</p>
           <Button onClick={toggleEditEmailFormHandler}>Edit</Button>
           {isEditingEmail && (
             <ChangeEmailForm onClose={toggleEditEmailFormHandler} />
           )}
-        </section>
-        <section className={classes["info"]}>
+        </div>
+        <div className={classes["info"]}>
           <Button onClick={toggleEditPasswordFormHandler}>
             Update password
           </Button>
-        </section>
+        </div>
         <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
       </div>
       <Modal
