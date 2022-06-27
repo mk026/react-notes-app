@@ -28,13 +28,11 @@ const NotesList: FC = () => {
   }
 
   return (
-    <>
-      <div className={classes["notes-list"]}>
-        {notes.map((note) => (
-          <NoteItem key={note._id} note={note} />
-        ))}
-      </div>
-    </>
+    <div className={classes["notes-list"]}>
+      {notes.map((note) => (
+        <NoteItem key={note._id} note={note} />
+      ))}
+    </div>
   );
 };
 
