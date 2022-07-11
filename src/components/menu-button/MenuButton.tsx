@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import classes from "./MenuButton.module.scss";
 
@@ -14,4 +14,4 @@ const MenuButton: FC<MenuButtonProps> = ({ onClick }) => {
   );
 };
 
-export default MenuButton;
+export default memo(MenuButton);

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 
 import MenuButton from "../menu-button/MenuButton";
 import NavMenu from "../nav-menu/NavMenu";
@@ -10,7 +10,7 @@ import classes from "./Header.module.scss";
 const Header: FC = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
 
-  const toggleMenu = () => setMenuIsActive((prev) => !prev);
+  const toggleMenu = useCallback(() => setMenuIsActive((prev) => !prev), []);
 
   return (
     <header className={classes.header}>
