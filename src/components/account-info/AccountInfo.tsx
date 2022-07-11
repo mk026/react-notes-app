@@ -57,7 +57,9 @@ const AccountInfo: FC = () => {
             Update password
           </Button>
         </div>
-        <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
+        <div className={classes["info"]}>
+          <Button onClick={toggleDeleteAccountModal}>Delete account</Button>
+        </div>
       </div>
       <Modal
         isActive={isEditingPassword}
