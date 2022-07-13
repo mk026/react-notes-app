@@ -3,10 +3,7 @@ import Backdrop from "../backdrop/Backdrop";
 
 import classes from "./Drawer.module.scss";
 
-export enum DrawerPosition {
-  LEFT = "left",
-  RIGHT = "right",
-}
+type DrawerPosition = "left" | "right";
 
 interface DrawerProps {
   children: ReactNode;
@@ -18,10 +15,10 @@ interface DrawerProps {
 const Drawer: FC<DrawerProps> = ({ position, isActive, onClose, children }) => {
   let styles = [];
 
-  if (position === DrawerPosition.LEFT) {
+  if (position === "left") {
     styles.push(classes["drawer--left"]);
   }
-  if (position === DrawerPosition.RIGHT) {
+  if (position === "right") {
     styles.push(classes["drawer--right"]);
   }
   if (isActive) {

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import { useLinks } from "../../hooks/useLinks";
-import Drawer, { DrawerPosition } from "../ui/drawer/Drawer";
+import Drawer from "../ui/drawer/Drawer";
 
 import classes from "./NavMenu.module.scss";
 
@@ -20,11 +20,7 @@ const NavMenu: FC<NavMenuProps> = ({ isActive, onClose }) => {
       : classes["nav-menu__link"];
 
   return (
-    <Drawer
-      isActive={isActive}
-      onClose={onClose}
-      position={DrawerPosition.LEFT}
-    >
+    <Drawer isActive={isActive} onClose={onClose} position="left">
       <nav className={classes["nav-menu"]}>
         <ul>
           {links.map(({ path, name }) => (
