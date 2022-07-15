@@ -25,3 +25,14 @@ export const todoRules = {
     maxLength: 50,
   },
 };
+
+export const imageRules = {
+  title: {
+    minLength: 1,
+    maxLength: 50,
+  },
+  description: {
+    minLength: 1,
+    maxLength: 500,
+  },
+};
