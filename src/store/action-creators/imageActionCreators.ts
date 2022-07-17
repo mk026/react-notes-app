@@ -11,3 +11,15 @@ export const fetchImages = () => async (dispatch: AppDispatch) => {
     dispatch(imageSlice.actions.setError((e as Error).message));
   }
 };
+
+export const addImage =
+  (image: any, title: string, description: string) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      dispatch(imageSlice.actions.enableLoading());
+      const response = await ImageService.addImage(image, title, description);
+      dispatch(imageSlice.actions.addImageSuccess(response.data));
+    } catch (e) {
+      dispatch(imageSlice.actions.setError((e as Error).message));
+    }
+  };
