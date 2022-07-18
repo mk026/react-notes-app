@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import AddImageForm from "../../components/forms/add-image-form/AddImageForm";
+import ImageList from "../../components/images/image-list/ImageList";
 
 import Button from "../../components/ui/button/Button";
 import Drawer from "../../components/ui/drawer/Drawer";
@@ -24,6 +25,7 @@ const GalleryPage: FC = () => {
         <PageTop title="My Gallery">
           <Button onClick={toggleAddImageForm}>Add new image</Button>
         </PageTop>
+        <ImageList />
       </Page>
     </>
   );
