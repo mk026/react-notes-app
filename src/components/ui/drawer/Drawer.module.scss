@@ -1,6 +1,8 @@
+@import "../../../styles/variables.scss";
+
 %drawer {
   position: fixed;
-  top: 62px;
+  top: $headerHeight;
   bottom: 0;
   width: 60vw;
   z-index: 100;
