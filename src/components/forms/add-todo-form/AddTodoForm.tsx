@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
+import { todoActions } from "../../../store/action-creators";
 import {
   todoFormInitialValues,
   TodoFormValues,
@@ -28,7 +29,7 @@ const AddTodoForm: FC<AddTodoFormProps> = ({ onClose }) => {
     validationSchema: todoValidationSchema,
     onSubmit: (values) => addTodoHandler(values),
   });
-  const { addTodo } = useActions();
+  const { addTodo } = useActions(todoActions);
 
   const addTodoHandler = ({ title }: TodoFormValues) => {
     addTodo(title);

@@ -1,15 +1,16 @@
 import { FC, useEffect } from "react";
 
+import TodoItem from "../todo-item/TodoItem";
 import { useAppSelector } from "../../../hooks/redux";
 import { useActions } from "../../../hooks/useActions";
 import { getTodoState } from "../../../store/selectors";
-import TodoItem from "../todo-item/TodoItem";
+import { todoActions } from "../../../store/action-creators";
 
 import classes from "./TodoList.module.scss";
 
 const TodosList: FC = () => {
   const { todos, isLoading, error } = useAppSelector(getTodoState);
-  const { fetchTodos } = useActions();
+  const { fetchTodos } = useActions(todoActions);
 
   useEffect(() => {
     fetchTodos();

@@ -1,25 +1,13 @@
 import { useMemo } from "react";
-import { bindActionCreators } from "@reduxjs/toolkit";
+import { ActionCreatorsMapObject, bindActionCreators } from "@reduxjs/toolkit";
 
 import { useAppDispatch } from "./redux";
-import * as actionCreators from "../store/action-creators";
-import { authSlice, noteSlice, todoSlice, userSlice } from "../store/reducers";
 
-export const useActions = () => {
+export const useActions = <T extends ActionCreatorsMapObject>(actions: T) => {
   const dispatch = useAppDispatch();
 
   return useMemo(
-    () =>
-      bindActionCreators(
-        {
-          ...actionCreators,
-          ...authSlice.actions,
-          ...userSlice.actions,
-          ...noteSlice.actions,
-          ...todoSlice.actions,
-        },
-        dispatch
-      ),
-    [dispatch]
+    () => bindActionCreators(actions, dispatch),
+    [actions, dispatch]
   );
 };

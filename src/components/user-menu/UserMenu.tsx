@@ -2,12 +2,13 @@ import { FC, MouseEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useActions } from "../../hooks/useActions";
+import { authActions } from "../../store/action-creators";
 import { Paths } from "../../routes";
 
 import classes from "./UserMenu.module.scss";
 
 const UserMenu: FC = () => {
-  const { signout } = useActions();
+  const { signout } = useActions(authActions);
   const navigate = useNavigate();
 
   const signoutHandler = (e: MouseEvent<HTMLButtonElement>) => {

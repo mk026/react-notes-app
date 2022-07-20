@@ -4,12 +4,13 @@ import NoteItem from "../note-item/NoteItem";
 import { useAppSelector } from "../../../hooks/redux";
 import { useActions } from "../../../hooks/useActions";
 import { getNoteState } from "../../../store/selectors";
+import { noteActions } from "../../../store/action-creators";
 
 import classes from "./NotesList.module.scss";
 
 const NotesList: FC = () => {
   const { notes, isLoading, error } = useAppSelector(getNoteState);
-  const { fetchNotes } = useActions();
+  const { fetchNotes } = useActions(noteActions);
 
   useEffect(() => {
     fetchNotes();

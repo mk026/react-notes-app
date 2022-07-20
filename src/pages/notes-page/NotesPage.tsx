@@ -10,10 +10,11 @@ import Page from "../../components/ui/page/Page";
 import { useAppSelector } from "../../hooks/redux";
 import { useActions } from "../../hooks/useActions";
 import { getNoteState } from "../../store/selectors";
+import { noteActions } from "../../store/action-creators";
 
 const NotesPage: FC = () => {
   const { isAdding, isEditing, selectedNote } = useAppSelector(getNoteState);
-  const { toggleIsAdding, toggleIsEditing } = useActions();
+  const { toggleIsAdding, toggleIsEditing } = useActions(noteActions);
 
   const toggleAddNoteFormHandler = () => toggleIsAdding();
   const toggleEditNoteFormHadler = () => toggleIsEditing();

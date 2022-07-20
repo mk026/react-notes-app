@@ -3,8 +3,9 @@ import { useFormik } from "formik";
 
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
-import { useActions } from "../../../hooks/useActions";
 import { ITodo } from "../../../models/ITodo";
+import { useActions } from "../../../hooks/useActions";
+import { todoActions } from "../../../store/action-creators";
 import {
   TodoFormValues,
   todoValidationSchema,
@@ -29,7 +30,7 @@ const EditTodoForm: FC<EditTodoFormProps> = ({ todo, onClose }) => {
     validationSchema: todoValidationSchema,
     onSubmit: (values) => editTodoHandler(values),
   });
-  const { updateTodo } = useActions();
+  const { updateTodo } = useActions(todoActions);
 
   const editTodoHandler = ({ title }: TodoFormValues) => {
     updateTodo({ ...todo, title });

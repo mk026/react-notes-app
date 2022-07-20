@@ -7,6 +7,7 @@ import Input from "../../ui/input/Input";
 import Textarea from "../../ui/textarea/Textarea";
 import { INote } from "../../../models/INote";
 import { useActions } from "../../../hooks/useActions";
+import { noteActions } from "../../../store/action-creators";
 import {
   NoteFormValues,
   noteValidationSchema,
@@ -18,7 +19,7 @@ interface EditNoteFormProps {
 }
 
 const EditNoteForm: FC<EditNoteFormProps> = ({ note, onClose }) => {
-  const { updateNote } = useActions();
+  const { updateNote } = useActions(noteActions);
 
   const {
     values,

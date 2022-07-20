@@ -5,6 +5,7 @@ import { useAppSelector } from "../../hooks/redux";
 import { useActions } from "../../hooks/useActions";
 import { Paths } from "../../routes";
 import { getUserState } from "../../store/selectors";
+import { userActions } from "../../store/action-creators";
 import ChangeEmailForm from "../forms/change-email-form/ChangeEmailForm";
 import ChangeNameForm from "../forms/change-name-form/ChangeNameForm";
 import ChangePasswordForm from "../forms/change-password-form/ChangePasswordForm";
@@ -20,7 +21,7 @@ const AccountInfo: FC = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const { user } = useAppSelector(getUserState);
-  const { deleteAccount } = useActions();
+  const { deleteAccount } = useActions(userActions);
   const navigate = useNavigate();
 
   const toggleEditNameFormHandler = () => setIsEditingName((prev) => !prev);

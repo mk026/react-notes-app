@@ -6,6 +6,7 @@ import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import Textarea from "../../ui/textarea/Textarea";
 import { useActions } from "../../../hooks/useActions";
+import { noteActions } from "../../../store/action-creators";
 import {
   noteFormInitialValues,
   NoteFormValues,
@@ -30,7 +31,7 @@ const AddNoteForm: FC<AddNoteFormProps> = ({ onClose }) => {
     validationSchema: noteValidationSchema,
     onSubmit: (values) => addNoteHandler(values),
   });
-  const { addNote } = useActions();
+  const { addNote } = useActions(noteActions);
 
   const addNoteHandler = ({ title, content }: NoteFormValues) => {
     addNote(title, content);

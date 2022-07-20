@@ -4,6 +4,7 @@ import Card from "../../ui/card/Card";
 import Button from "../../ui/button/Button";
 import { INote } from "../../../models/INote";
 import { useActions } from "../../../hooks/useActions";
+import { noteActions } from "../../../store/action-creators";
 
 import classes from "./NoteItem.module.scss";
 
@@ -13,7 +14,7 @@ interface NoteItemProps {
 
 const NoteItem: FC<NoteItemProps> = ({ note }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { showEditNoteForm, deleteNote } = useActions();
+  const { showEditNoteForm, deleteNote } = useActions(noteActions);
 
   const isExpandable = note.content.length > 100;
 

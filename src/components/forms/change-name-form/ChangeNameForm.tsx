@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
+import { userActions } from "../../../store/action-creators";
 import {
   changeNameFormInitialValues,
   ChangeNameFormValues,
@@ -28,7 +29,7 @@ const ChangeNameForm: FC<ChangeNameFormProps> = ({ onClose }) => {
     validationSchema: changeNameValidationSchema,
     onSubmit: (values) => changeNameHandler(values),
   });
-  const { updateName } = useActions();
+  const { updateName } = useActions(userActions);
 
   const changeNameHandler = ({ name }: ChangeNameFormValues) => {
     updateName(name);

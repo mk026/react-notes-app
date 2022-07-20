@@ -4,12 +4,13 @@ import { useFormik } from "formik";
 import Form from "../../ui/form/Form";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
+import { useActions } from "../../../hooks/useActions";
+import { userActions } from "../../../store/action-creators";
 import {
   changePasswordFormInitialValues,
   ChangePasswordFormValues,
   changePasswordValidationSchema,
 } from "../../../validation/changePasswordValidation";
-import { useActions } from "../../../hooks/useActions";
 
 interface ChangePasswordFormProps {
   onClose: () => void;
@@ -29,7 +30,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = ({ onClose }) => {
     validationSchema: changePasswordValidationSchema,
     onSubmit: (values) => changePasswordHandler(values),
   });
-  const { updatePassword } = useActions();
+  const { updatePassword } = useActions(userActions);
 
   const changePasswordHandler = ({
     oldPassword,

@@ -5,6 +5,7 @@ import Button from "../../ui/button/Button";
 import EditTodoForm from "../../forms/edit-todo-form/EditTodoForm";
 import { ITodo } from "../../../models/ITodo";
 import { useActions } from "../../../hooks/useActions";
+import { todoActions } from "../../../store/action-creators";
 
 import classes from "./TodoItem.module.scss";
 
@@ -14,7 +15,7 @@ interface TodoItemProps {
 
 const TodoItem: FC<TodoItemProps> = ({ todo }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const { updateTodo, deleteTodo } = useActions();
+  const { updateTodo, deleteTodo } = useActions(todoActions);
 
   const toggleEditForm = () => setIsEditing((prev) => !prev);
   const deleteTodoHandler = () => deleteTodo(todo._id);

@@ -4,10 +4,11 @@ import ImageItem from "../image-item/ImageItem";
 import { useAppSelector } from "../../../hooks/redux";
 import { useActions } from "../../../hooks/useActions";
 import { getImageState } from "../../../store/selectors/imageSelectors";
+import { imageActions } from "../../../store/action-creators";
 
 const ImageList: FC = () => {
   const { images, isLoading, error } = useAppSelector(getImageState);
-  const { fetchImages } = useActions();
+  const { fetchImages } = useActions(imageActions);
 
   useEffect(() => {
     fetchImages();

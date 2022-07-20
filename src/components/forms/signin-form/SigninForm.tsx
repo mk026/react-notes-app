@@ -14,6 +14,7 @@ import {
 import { useAppSelector } from "../../../hooks/redux";
 import { getAuthState } from "../../../store/selectors";
 import { Paths } from "../../../routes";
+import { authActions } from "../../../store/action-creators";
 
 interface SigninFormProps {
   switchToSignup: () => void;
@@ -35,7 +36,7 @@ const SigninForm: FC<SigninFormProps> = ({ switchToSignup, redirectPath }) => {
     validationSchema: signinValidationSchema,
     onSubmit: (values) => signinHandler(values),
   });
-  const { signin } = useActions();
+  const { signin } = useActions(authActions);
   const { isAuth } = useAppSelector(getAuthState);
   const navigate = useNavigate();
 

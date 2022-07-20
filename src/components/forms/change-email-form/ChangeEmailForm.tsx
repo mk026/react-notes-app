@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import { useActions } from "../../../hooks/useActions";
+import { userActions } from "../../../store/action-creators";
 import {
   changeEmailFormInitialValues,
   ChangeEmailFormValues,
@@ -28,7 +29,7 @@ const ChangeEmailForm: FC<ChangeEmailFormProps> = ({ onClose }) => {
     validationSchema: changeEmailValidationSchema,
     onSubmit: (values) => changeEmailHandler(values),
   });
-  const { updateEmail } = useActions();
+  const { updateEmail } = useActions(userActions);
 
   const changeEmailHandler = ({ email }: ChangeEmailFormValues) => {
     updateEmail(email);
