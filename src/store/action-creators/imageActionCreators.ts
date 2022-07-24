@@ -34,3 +34,13 @@ export const updateImage = (image: IImage) => async (dispatch: AppDispatch) => {
     dispatch(imageSlice.actions.setError((e as Error).message));
   }
 };
+
+export const deleteImage = (id: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(imageSlice.actions.enableLoading());
+    const response = await ImageService.deleteImage(id);
+    dispatch(imageSlice.actions.deleteImageSuccess(response.data));
+  } catch (e) {
+    dispatch(imageSlice.actions.setError((e as Error).message));
+  }
+};
