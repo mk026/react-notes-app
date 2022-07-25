@@ -11,21 +11,14 @@ const AuthPage: FC = () => {
   const [isSignin, setIsSignin] = useState(true);
   const { state } = useLocation();
 
-  const switchToSignupHandler = () => setIsSignin(false);
-  const switchToSigninHandler = () => setIsSignin(true);
+  const switchAuthFrom = () => setIsSignin((prev) => !prev);
 
   const redirectPath = (state as { from?: Paths })?.from || Paths.HOME_PATH;
 
   const activeForm = isSignin ? (
-    <SigninForm
-      switchToSignup={switchToSignupHandler}
-      redirectPath={redirectPath}
-    />
+    <SigninForm switchToSignup={switchAuthFrom} redirectPath={redirectPath} />
   ) : (
-    <SignupForm
-      switchToSignin={switchToSigninHandler}
-      redirectPath={redirectPath}
-    />
+    <SignupForm switchToSignin={switchAuthFrom} redirectPath={redirectPath} />
   );
 
   return (
