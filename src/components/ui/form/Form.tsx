@@ -4,11 +4,14 @@ import classes from "./Form.module.scss";
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode;
+  inline?: boolean;
 }
 
-const Form: FC<FormProps> = ({ children, ...props }) => {
+const Form: FC<FormProps> = ({ children, inline, ...props }) => {
+  const styles = inline ? classes["inline-form"] : classes["form"];
+
   return (
-    <form className={classes.form} {...props}>
+    <form className={styles} {...props}>
       {children}
     </form>
   );
