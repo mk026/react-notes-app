@@ -10,14 +10,14 @@ export interface AuthResponse {
 export default class AuthService {
   static tokenKey = "token";
 
-  static async signin(
+  static signin(
     email: string,
     password: string
   ): Promise<AxiosResponse<AuthResponse>> {
     return api.post<AuthResponse>(ApiEndpoints.SIGNIN, { email, password });
   }
 
-  static async signup(
+  static signup(
     name: string,
     email: string,
     password: string
@@ -29,7 +29,7 @@ export default class AuthService {
     });
   }
 
-  static async checkAuth(): Promise<AxiosResponse<AuthResponse>> {
+  static checkAuth(): Promise<AxiosResponse<AuthResponse>> {
     return authApi.get<AuthResponse>(ApiEndpoints.CHECK);
   }
 
